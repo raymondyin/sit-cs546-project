@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     let userData = req.body;
-  
+    console.log(userData.fname);
         
 });
 
