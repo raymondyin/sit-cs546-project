@@ -41,11 +41,11 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" name="fname" id="exampleFirstName"
-                      placeholder="First Name" required>
+                      placeholder="First Name" pattern="[a-zA-Z]*" required>
                   </div>
                   <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user" name="lname" id="exampleLastName"
-                      placeholder="Last Name" required>
+                      placeholder="Last Name" pattern="[a-zA-Z]*" required>
                   </div>
                   <div>
                       <p id='message_name'></p>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="form-group">
                   <input type="tel" class="form-control form-control-user" name="phoneNumber"
-                    id="exampleInputPhoneNumber" placeholder="Phone Number" required>
+                    id="exampleInputPhoneNumber" placeholder="Phone Number" pattern="[0-9]" required>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -124,7 +124,7 @@
   <script src="/public/js/register.js"></script>
 
   <script>
-    $('#exampleInputPassword, #exampleRepeatPassword, #exampleFirstName, #exampleLastName, #exampleInputPhoneNumber').on('keyup', function () {
+    $('#exampleInputPassword, #exampleRepeatPassword').on('keyup', function () {
       if (($('#exampleInputPassword').val() === $('#exampleRepeatPassword').val()) && ($('#exampleInputPassword').val() != "" && $('#exampleRepeatPassword').val() != "")){
         $('#message').html('Passwords are matched!').css({ 'color': 'grey', 'font-size': '0.8 rem' });
         $('#submit_button').removeAttr("disabled");
