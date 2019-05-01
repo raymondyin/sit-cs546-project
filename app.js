@@ -3,7 +3,29 @@ const app = express();
 const bodyParser = require("body-parser");
 const configRoutes = require("./routes");
 const exphbs = require("express-handlebars");
+const session = require('express-session');
+
 const static = express.static(__dirname + "/public");
+app.use(session({
+  name: 'AuthCookie',
+  secret: 'some secret string!',
+  resave: false,
+  saveUninitialized: true,
+}));
+var log = async (req, res, next) => {
+  let currentTime = new Date().toUTCString();
+  let method = req.method;
+  let route = req.originalUrl;
+  let something = "";
+  if (req.session.AuthCookie) {
+      something = "(Authenticated User)";
+  } else {
+      something = "(Non-Authenticated User)";
+  }
+  console.log("[" +currentTime + "]: " + method + " " + route + " " + something);
+  next();
+};
+app.use(log);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

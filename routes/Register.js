@@ -3,12 +3,12 @@ const router = express.Router();
 const data = require("../data");
 const registerData = data.register;
 const path = require("path");
+const xss = require("xss");
 
 // var popupS = require('popups');
 
-
 router.post("/", async (req, res) => {
-    let userData = req.body;
+    let userData = xss(req.body);
     try {
         const fname = userData.fname;
         const lname = userData.lname;
