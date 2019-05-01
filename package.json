@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,12 @@
     "bcrypt": "^3.0.6",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "express-session": "^1.16.1",
     "mongodb": "^3.2.3",
+    "passport": "^0.4.0",
     "xss": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
   }
 }

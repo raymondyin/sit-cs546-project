@@ -8,18 +8,18 @@ const xss = require("xss");
 // var popupS = require('popups');
 
 router.post("/", async (req, res) => {
-    let userData = xss(req.body);
     try {
-        const fname = userData.fname;
-        const lname = userData.lname;
-        const age = userData.age;
-        const gender = userData.gender;
-        const city = userData.city;
-        const state = userData.state;
-        const email = userData.email;
-        const phoneNumber = userData.phontNumber;
-        const password = userData.pw1;
-        const createAccount = await registerData.create(fname, lname, age, gender, city, state, email, phoneNumber, password);
+        const fname = xss(req.body.fname);
+        const lname = xss(req.body.lname);
+        const age = xss(req.body.age);
+        const gender = xss(req.body.gender);
+        const country = xss(req.body.country);
+        const city = xss(req.body.city);
+        const state = xss(req.body.state);
+        const email = xss(req.body.email);
+        const phoneNumber = xss(req.body.phoneNumber);
+        const password = xss(req.body.pw1);
+        const createAccount = await registerData.create(fname, lname, age, gender, city, state, country, email, phoneNumber, password);
         res.sendFile(path.resolve("static/login.html"));
     } catch(e) {
         console.log(e);
