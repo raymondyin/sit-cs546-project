@@ -20,6 +20,7 @@
   "homepage": "https://github.com/raymondyin/sit-cs546-project#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "connect-flash": "^0.1.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "express-session": "^1.16.1",

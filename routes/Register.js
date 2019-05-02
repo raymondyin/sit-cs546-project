@@ -6,6 +6,9 @@ const path = require("path");
 const xss = require("xss");
 
 // var popupS = require('popups');
+router.get('/', async (req, res) => {
+    res.render('static/register');
+});
 
 router.post("/", async (req, res) => {
     try {
@@ -20,7 +23,8 @@ router.post("/", async (req, res) => {
         const phoneNumber = xss(req.body.phoneNumber);
         const password = xss(req.body.pw1);
         const createAccount = await registerData.create(fname, lname, age, gender, city, state, country, email, phoneNumber, password);
-        res.sendFile(path.resolve("static/login.html"));
+        req.flash('success_msg', 'You are now registered and can now login');
+        res.redirect('/login');
     } catch(e) {
         console.log(e);
         res.status(500).send();
