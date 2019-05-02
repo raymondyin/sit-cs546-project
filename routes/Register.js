@@ -22,9 +22,14 @@ router.post("/", async (req, res) => {
         const email = xss(req.body.email);
         const phoneNumber = xss(req.body.phoneNumber);
         const password = xss(req.body.pw1);
-        const createAccount = await registerData.create(fname, lname, age, gender, city, state, country, email, phoneNumber, password);
-        req.flash('success_msg', 'You are now registered and can now login');
-        res.redirect('/login');
+        if (registerData.findExist(email)) {
+            req.flash('error_msg', 'This email address is already used');
+            res.redirect('/register');
+        } else {
+            const createAccount = await registerData.create(fname, lname, age, gender, city, state, country, email, phoneNumber, password);
+            req.flash('success_msg', 'You are now registered and can now login');
+            res.redirect('/login');
+        }
     } catch(e) {
         console.log(e);
         res.status(500).send();
