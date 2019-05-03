@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
             res.redirect('/register');
         } else {
             const createAccount = await registerData.create(fname, lname, age, gender, city, state, country, email, phoneNumber, password);
+            console.log(createAccount);
             req.flash('success_msg', 'You are now registered and can now login');
             res.redirect('/login');
         }

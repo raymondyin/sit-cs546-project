@@ -12,7 +12,10 @@ const constructorMethod = app => {
     app.use(bodyParser.json());
    
     app.use("/login", login);
-  
+    
+app.get('/dashboard',  (req, res) => {
+  res.render('static/dashboard');
+});
     app.use("*", (req, res) => {
       res.status(404).send("error");
     });

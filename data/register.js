@@ -30,14 +30,10 @@ async function findExist(email) {
     const userInfo = await users();
     const currUser = await userInfo.findOne({"profile.Email": email});
     console.log(currUser);
-    if (currUser == null) {
-        console.log(false);
+    if (currUser == null)
         return false;
-    }
-    else {
-        console.log(true);
+    else 
         return true;
-    }
 }
 
 module.exports = {
