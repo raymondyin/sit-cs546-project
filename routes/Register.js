@@ -21,8 +21,8 @@ router.post("/", async (req, res) => {
         const state = xss(req.body.state);
         const email = xss(req.body.email);
         const phoneNumber = xss(req.body.phoneNumber);
-        const password = xss(req.body.pw1);
-        if (registerData.findExist(email)) {
+        const password = xss(req.body.pw1);    
+        if (await registerData.findExist(email)) {
             req.flash('error_msg', 'This email address is already used');
             res.redirect('/register');
         } else {
