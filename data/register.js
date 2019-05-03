@@ -29,10 +29,15 @@ async function create(fname, lname, age, gender, city, state, country, email, ph
 async function findExist(email) {  
     const userInfo = await users();
     const currUser = await userInfo.findOne({"profile.Email": email});
-    if (currUser === null)
+    console.log(currUser);
+    if (currUser == null) {
+        console.log(false);
         return false;
-    else
+    }
+    else {
+        console.log(true);
         return true;
+    }
 }
 
 module.exports = {
