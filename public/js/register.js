@@ -1,7 +1,7 @@
 let dropdown = $('#locality-dropdown');
 dropdown.empty();
 
-dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
+dropdown.append('<option selected="true" disabled>Choose country</option>');
 dropdown.prop('selectedIndex', 0);
 
 const url = 'https://gist.githubusercontent.com/Goles/3196253/raw/9ca4e7e62ea5ad935bb3580dc0a07d9df033b451/CountryCodes.json';
