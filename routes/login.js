@@ -3,11 +3,15 @@ const router = express.Router();
 const data = require("../data");
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
-
+const RememberMeStrategy = require('passport-remember-me').Strategy;
 const user = data.userData;
 
 router.get("/", async (req, res) => {
-    res.render("static/login");
+    if (req.session.passport) {
+        res.redirect('/dashboard');
+    } else {
+        res.render("static/login");
+    }
 });
 
 passport.use(new LocalStrategy({
@@ -29,6 +33,23 @@ passport.use(new LocalStrategy({
     }
 ));
 
+passport.use(new RememberMeStrategy(
+    function(token, done) {
+      Token.consume(token, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        return done(null, user);
+      });
+    },
+    function(user, done) {
+      var token = utils.generateToken(64);
+      Token.save(token, { userId: user._id }, function(err) {
+        if (err) { return done(err); }
+        return done(null, token);
+      });
+    }
+));
+
 passport.serializeUser(async function (user, done) {
     done(null, user._id);
 });
@@ -40,9 +61,18 @@ passport.deserializeUser(async function (id, done) {
 
 
 router.post('/',
-    passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true }),
-    async function (req, res) {
-        res.redirect('/dashboard');
+    passport.authenticate('local', {failureRedirect: '/login', failureFlash: true }),
+    async function (req, res, next) {
+       if (!req.body.remember_me) {return next()};
+       var token = utils.generateToken(64);
+       Token.save(token, { userId: req.user._id }, async function(err) {
+         if (err) { return done(err); }
+         res.cookie('remember_me', token, { path: '/', httpOnly: true, maxAge: 604800000 }); // 7 days
+         return next();
+       });
+     },
+     async function(req, res) {
+       res.redirect('/dashboard');
 });
 
 

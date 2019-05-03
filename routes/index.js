@@ -16,6 +16,11 @@ const constructorMethod = app => {
 app.get('/dashboard',  (req, res) => {
   res.render('static/dashboard');
 });
+
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
     app.use("*", (req, res) => {
       res.status(404).send("error");
     });

@@ -4,10 +4,12 @@ const bodyParser = require("body-parser");
 const configRoutes = require("./routes");
 const exphbs = require("express-handlebars");
 const session = require('express-session');
+const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const passport = require('passport');
 
 const static = express.static(__dirname + "/public");
+app.use(cookieParser());
 app.use(session({
   secret: 'secret',
   resave: true,
@@ -15,13 +17,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(passport.authenticate('remember-me'));
 var log = async (req, res, next) => {
   let currentTime = new Date().toUTCString();
   let method = req.method;
   let route = req.originalUrl;
   let something = "";
-  if (req.session.AuthCookie) {
+  if (req.session.passport) {
       something = "(Authenticated User)";
   } else {
       something = "(Non-Authenticated User)";
