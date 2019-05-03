@@ -1,8 +1,7 @@
 const mongoCollections = require("./collections.js");
 const users = mongoCollections.Users;
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
-
+const saltRounds = 16;
 async function create(fname, lname, age, gender, city, state, country, email, phoneNumber, passWord) {
     const hashedPW = await bcrypt.hash(passWord, saltRounds);
     const usersCollection = await users();
@@ -27,18 +26,9 @@ async function create(fname, lname, age, gender, city, state, country, email, ph
     return userProfile;
 }
 
-async function findExist(email) {
-   
+async function findExist(email) {  
     const userInfo = await users();
-    const currUser = await userInfo.findOne({profile: {"Email": email}});
-    // var promise = new Promise(function(resolve) {
-    //     const res = userInfo.find({profile: {Email: email}}).toArray();
-    //     resolve(res);
-    // }).then(function(value) {
-    //     return value;
-    // })
-    // const currUser = await promise;
-    console.log(currUser);
+    const currUser = await userInfo.findOne({"profile.Email": email});
     if (currUser === null)
         return false;
     else
