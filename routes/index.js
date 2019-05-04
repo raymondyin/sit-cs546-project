@@ -22,7 +22,7 @@ app.get('/logout', (req, res) => {
   res.redirect("/");
 });
     app.use("*", (req, res) => {
-      res.status(404).send("error");
+      res.redirect('/');
     });
   };
 

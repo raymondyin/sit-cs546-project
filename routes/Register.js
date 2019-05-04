@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 const registerData = data.register;
-const path = require("path");
 const xss = require("xss");
 
 // var popupS = require('popups');

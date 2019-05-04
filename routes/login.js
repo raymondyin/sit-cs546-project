@@ -4,7 +4,17 @@ const data = require("../data");
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const RememberMeStrategy = require('passport-remember-me').Strategy;
+const xss = require("xss");
 const user = data.userData;
+
+
+var sessionChecker = async (req, res, next) => {
+    if (req.session.passport) {
+        next();
+    } else {
+        res.redirect('/login');
+    }    
+};
 
 router.get("/", async (req, res) => {
     if (req.session.passport) {
@@ -19,11 +29,13 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
     } ,  
     async function (email, password, done) {
-        const result = await user.findUserByEmail(email);
+        const emailAddress =  xss(email);
+        const userPass =  xss(password);
+        const result = await user.findUserByEmail(emailAddress);
         if (result === null) {
             return done(null, false, { message: 'unknown user' });
         } else {
-            const isMatch = await user.comparePassword(password, result.hashedPassword);
+            const isMatch = await user.comparePassword(userPass, result.hashedPassword);
             if (isMatch) {
                 return done(null, result);
             } else {
