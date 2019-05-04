@@ -37,6 +37,12 @@
                     <input type="password" class="form-control form-control-user" name="password"
                       id="exampleInputPassword" placeholder="Password" minlength=6 required>
                   </div>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                      <input type="checkbox" class="custom-control-input" id="customCheck">
+                      <label class="custom-control-label" for="customCheck">Remember Me</label>
+                    </div>
+                  </div>
                   <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
@@ -63,9 +69,11 @@
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
+<script src="js/login.js"></script>
