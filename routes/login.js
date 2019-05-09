@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     if (req.session.passport) {
         res.redirect('/dashboard');
     } else {
-        res.render("static/login");
+        res.render("static/login", {title: "Login"});
     }
 });
 
