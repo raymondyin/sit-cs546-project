@@ -2,6 +2,7 @@ const path = require("path");
 const register = require("./Register");
 const bodyParser = require('body-parser');
 const login = require("./login");
+const dashboard = require("./dashboard");
 
 const constructorMethod = app => {
 
@@ -12,10 +13,9 @@ const constructorMethod = app => {
     app.use(bodyParser.json());
    
     app.use("/login", login);
+    app.use('/dashboard', dashboard);
     
-app.get('/dashboard',  (req, res) => {
-  res.render('static/dashboard');
-});
+
 
 app.get('/logout', (req, res) => {
   req.session.destroy();
