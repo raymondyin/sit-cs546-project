@@ -13,7 +13,6 @@ $(function () {
     $('#customCheck').click(function () {
 
         if ($('#customCheck').is(':checked')) {
-            // save username and password
             localStorage.username = $('#exampleInputEmail').val();
             localStorage.pass = $('#exampleInputPassword').val();
             localStorage.chkbox = $('#customCheck').val();
