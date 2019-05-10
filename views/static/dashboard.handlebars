@@ -10,7 +10,7 @@
                 <i class="fas fa-laugh-wink"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Bookmark Collector </div>
-        </a >
+        </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -19,23 +19,23 @@
         <li class="nav-item active">
             <a class="nav-link" href=" " onclick="gotoType(1)">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a >
+                <span>Dashboard</span></a>
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
+
                 <span>Your List</span>
-            </a >
-           
+            </a>
+
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Favorite</span></a >
+
+                <span>Favorite</span></a>
         </li>
 
 
@@ -45,36 +45,36 @@
         <!-- Type buttom -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Type 1</span></a >
-        </li>  
-        
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-               
-                <span>Type 2</span></a >
+
+                <span>Type 1</span></a>
         </li>
 
         <!-- Type buttom -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Type 3</span></a >
+
+                <span>Type 2</span></a>
         </li>
 
         <!-- Type buttom -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Type 4</span></a >
-        </li>                              
+
+                <span>Type 3</span></a>
+        </li>
 
         <!-- Type buttom -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Type 5</span></a >
+
+                <span>Type 4</span></a>
+        </li>
+
+        <!-- Type buttom -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+
+                <span>Type 5</span></a>
         </li>
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -111,19 +111,64 @@
                         </div>
                     </div>
                 </form>
-                
+
                 <!-- Add Url -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Add URL..."
                             aria-label="AddURL" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urlModal">
                                 <i class="fas fa-plus fa-sm"></i>
                             </button>
                         </div>
                     </div>
                 </form>
+
+                <!-- Add url form -->
+                <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add new Bookmark</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="Bookmark title">Title</label>
+                                        <input type="text" class="form-control" id="bookTitle"
+                                            aria-describedby="emailHelp" placeholder="Bookmark Title....">
+                                    </div>
+                                    <!-- add image File -->
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Book Description">Content</label>
+                                        <textarea class="form-control" id="bookContent" rows="3"
+                                            placeholder="Enter Description.."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -133,7 +178,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
-                        </a >
+                        </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                             aria-labelledby="searchDropdown">
@@ -156,7 +201,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="addUrlDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-plus fa-fw"></i>
-                        </a >
+                        </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                             aria-labelledby="addUrlDropdown">
@@ -177,7 +222,7 @@
                     <!-- Nav Item - Alerts -->
 
                     <!-- Nav Item - Messages -->
-                    
+
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -187,14 +232,14 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                        </a >
+                        </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
-                            </a >
+                            </a>
                         </div>
                     </li>
 
@@ -218,17 +263,18 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Url</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p >
-                        <a href="#" class="card-link">Go To This link</a >
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="card-link">Go To This link</a>
                     </div>
-                    </div>  
+                </div>
 
                 <!-- Content Row -->
 
-                
+
 
                 <!-- Content Row -->
-               
+
 
             </div>
             <!-- /.container-fluid -->
@@ -255,7 +301,7 @@
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-</a >
+</a>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -271,7 +317,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/logout">Logout</a >
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
