@@ -7,6 +7,7 @@ const session = require('express-session');
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const passport = require('passport');
+//aaa
 
 const static = express.static(__dirname + "/public");
 app.use(cookieParser());
