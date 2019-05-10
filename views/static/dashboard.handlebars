@@ -135,9 +135,9 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="Bookmark Category">Category</label>
+                                        <label for="Bookmark Category">Genre</label>
                                         <input type="text" class="form-control" id="bookCategory"
-                                            aria-describedby="categoryHelp" placeholder="Bookmark Category....">
+                                            aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
                                     <!-- add image File -->
                                     <div class="container">
@@ -146,7 +146,7 @@
                                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename"
-                                                        disabled="disabled" placeholder="Upload image">
+                                                        disabled="disabled" placeholder="Upload image" required>
                                                     <!-- don't give a name === doesn't send on POST/GET -->
                                                     <span class="input-group-btn">
                                                         <!-- image-preview-clear button -->
@@ -159,7 +159,7 @@
                                                         <div class="btn btn-default image-preview-input">
                                                             <span class="glyphicon glyphicon-folder-open"></span>
                                                             <span class="image-preview-input-title">Browse</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif"
+                                                            <input id="inputImgFile" type="file" accept="image/png, image/jpeg, image/gif"
                                                                 name="input-file-preview" /> <!-- rename it -->
                                                         </div>
                                                     </span>
@@ -172,8 +172,8 @@
 
                                     <div class="form-group">
                                         <label for="Book Description">Content</label>
-                                        <textarea class="form-control" id="bookContent" rows="3"
-                                            placeholder="Enter Description.."></textarea>
+                                        <textarea id="bookDes" class="form-control" id="bookContent" rows="3"
+                                            placeholder="Enter Description.." required></textarea>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
@@ -182,14 +182,14 @@
                                         <label for="URL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
-                                            pattern="https://.*" size="30">
+                                            pattern="https://.*" size="30" required>
                                     </div>
 
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-primary" id="saveBookmark">Save</button>
                             </div>
                         </div>
                     </div>
@@ -338,5 +338,6 @@
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/postBookmark.js"></script>
 
 <!-- Page level plugins -->

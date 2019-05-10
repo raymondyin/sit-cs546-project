@@ -1,16 +1,3 @@
-$(document).on('click', '#close-preview', function(){ 
-    $('.image-preview').popover('hide');
-    // Hover befor close the preview
-    $('.image-preview').hover(
-        function () {
-           $('.image-preview').popover('show');
-        }, 
-         function () {
-           $('.image-preview').popover('hide');
-        }
-    );    
-});
-
 $(function() {
     // Create the close button
     var closebtn = $('<button/>', {
@@ -21,7 +8,6 @@ $(function() {
     });
     closebtn.attr("class","close pull-right");
     // Set the popover default content
-    console.log($(closebtn)[0].outerHTML);
     $('.image-preview').popover({
         trigger:'manual',
         html: true,
