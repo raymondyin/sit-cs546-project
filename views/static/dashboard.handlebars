@@ -39,49 +39,28 @@
         </li>
 
 
-        <!-- Divider -->
+         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Type buttom -->
+        {{!-- <!-- Type buttom -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Type 1</span></a >
-        </li>  
-        
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-               
-                <span>Type 2</span></a >
+
+                <span>Type 1</span></a>
+        </li> --}}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href=" " role="button" aria-haspopup="true"
+                aria-expanded="false">
+                Categories
+            </a>
+            <div class="dropdown-menu" id="categoryList">
+                <a class="dropdown-item" href="#">1</a>
+                <a class="dropdown-item" href="#">2</a>
+                <a class="dropdown-item" href="#">3</a>
+                <a class="dropdown-item" href="#">4</a>
+                <a class="dropdown-item" href="#">5</a>
+            </div>
         </li>
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-               
-                <span>Type 3</span></a >
-        </li>
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-               
-                <span>Type 4</span></a >
-        </li>                              
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-               
-                <span>Type 5</span></a >
-        </li>
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -95,9 +74,9 @@
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                {{!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
-                </button>
+                </button> --}}
 
                 <!-- Topbar Search -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
