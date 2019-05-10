@@ -10,7 +10,7 @@
                 <i class="fas fa-laugh-wink"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Bookmark Collector </div>
-        </a >
+        </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -19,29 +19,30 @@
         <li class="nav-item active">
             <a class="nav-link" href=" " onclick="gotoType(1)">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a >
+                <span>Dashboard</span></a>
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
+
                 <span>Your List</span>
-            </a >
-           
+            </a>
+
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
-               
-                <span>Favorite</span></a >
+
+                <span>Favorite</span></a>
         </li>
 
 
          <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
+<<<<<<< HEAD
         {{!-- <!-- Type buttom -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
@@ -54,6 +55,15 @@
                 Categories
             </a>
             <div class="dropdown-menu" id="categoryList">
+=======
+        <!-- Type buttom -->
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Tags
+            </a>
+            <div class="dropdown-menu">
+>>>>>>> Edward
                 <a class="dropdown-item" href="#">1</a>
                 <a class="dropdown-item" href="#">2</a>
                 <a class="dropdown-item" href="#">3</a>
@@ -61,6 +71,15 @@
                 <a class="dropdown-item" href="#">5</a>
             </div>
         </li>
+<<<<<<< HEAD
+=======
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        {{!-- <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div> --}}
+
+>>>>>>> Edward
     </ul>
     <!-- End of Sidebar -->
 
@@ -90,19 +109,89 @@
                         </div>
                     </div>
                 </form>
-                
+
                 <!-- Add Url -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Add URL..."
-                            aria-label="AddURL" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-plus fa-sm"></i>
-                            </button>
-                        </div>
+                    <div class="input-group justify-content-end">
+                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urlModal">
+                            Add Bookmark
+                        </button>
                     </div>
                 </form>
+
+                <!-- Add url form -->
+                <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add new Bookmark</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="Bookmark Category">Category</label>
+                                        <input type="text" class="form-control" id="bookCategory"
+                                            aria-describedby="categoryHelp" placeholder="Bookmark Category....">
+                                    </div>
+                                    <!-- add image File -->
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                                <div class="input-group image-preview">
+                                                    <input type="text" class="form-control image-preview-filename"
+                                                        disabled="disabled" placeholder="Upload image">
+                                                    <!-- don't give a name === doesn't send on POST/GET -->
+                                                    <span class="input-group-btn">
+                                                        <!-- image-preview-clear button -->
+                                                        <button type="button"
+                                                            class="btn btn-default image-preview-clear"
+                                                            style="display:none;">
+                                                            <span class="glyphicon glyphicon-remove"></span> Clear
+                                                        </button>
+                                                        <!-- image-preview-input -->
+                                                        <div class="btn btn-default image-preview-input">
+                                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                            <span class="image-preview-input-title">Browse</span>
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif"
+                                                                name="input-file-preview" /> <!-- rename it -->
+                                                        </div>
+                                                    </span>
+                                                </div><!-- /input-group image-preview [TO HERE]-->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group">
+                                        <label for="Book Description">Content</label>
+                                        <textarea class="form-control" id="bookContent" rows="3"
+                                            placeholder="Enter Description.."></textarea>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+                                    <!-- URL -->
+                                    <div class="form-group">
+                                        <label for="URL">Bookmark Url</label>
+                                        <input type="url" class="form-control" id="bookmarkURL"
+                                            aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
+                                            pattern="https://.*" size="30">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -112,7 +201,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
-                        </a >
+                        </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                             aria-labelledby="searchDropdown">
@@ -131,32 +220,12 @@
                     </li>
 
                     <!-- Nav Item - AddURL Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="addUrlDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-plus fa-fw"></i>
-                        </a >
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                            aria-labelledby="addUrlDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
-                                        placeholder="Add URL..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-plus fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
+
 
                     <!-- Nav Item - Alerts -->
 
                     <!-- Nav Item - Messages -->
-                    
+
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -166,14 +235,14 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                        </a >
+                        </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
-                            </a >
+                            </a>
                         </div>
                     </li>
 
@@ -197,17 +266,18 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Url</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p >
-                        <a href="#" class="card-link">Go To This link</a >
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="card-link">Go To This link</a>
                     </div>
-                    </div>  
+                </div>
 
                 <!-- Content Row -->
 
-                
+
 
                 <!-- Content Row -->
-               
+
 
             </div>
             <!-- /.container-fluid -->
@@ -234,7 +304,7 @@
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-</a >
+</a>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -250,7 +320,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/logout">Logout</a >
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
@@ -265,5 +335,6 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
+<script src="js/dashboard.js"></script>
 
 <!-- Page level plugins -->
