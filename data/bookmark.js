@@ -31,6 +31,7 @@ async function getBookmarkById(id) {
 }
  
 //add category to side bar
+// ======================== Shuhao ===============================
 async function addCategory(genre){
     const bookmark = await book();
     const categoryInfo = {
@@ -54,9 +55,9 @@ async function checkCategory(genre) {
     }
 }
 
-async function getCategoryById(id){
+async function getCategoryById(id, genre){
     const category = await book();
-    const allCategory = await category.find({userCategory: genre}).toArray();
+    const allCategory = await category.find({userId:id, genre: genre}).toArray();
     return allCategory;
 }
 
@@ -68,3 +69,5 @@ module.exports = {
     getCategoryById,
     checkCategory
 }
+
+// ======================== Shuhao ===============================

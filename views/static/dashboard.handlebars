@@ -52,20 +52,78 @@
                         </button>
                     </h2>
                 </div>
-<script>
+                {{!-- ============= shuhao ============= --}}
+{{!-- <script>
     var incomingBookmarkCategory = document.getElementById("bookCategory").innerHTML;
 
-<<<<<<< HEAD
     document.getElementById('bookCategory')
 </script>
                 <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-=======
-                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne"
-                    data-parent="#accordionExample">
->>>>>>> 90d26134e163c3cd798d0143aa93ebc6f67bacfd
                     <div class="card-body">
                         Video
                     </div>
+                    
+                </div>
+            </div> --}}
+
+            <!-- Begin Category Content -->
+            {{!-- <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{#if success_msg}}
+                        <div class="alert alert-success">{{success_msg}}</div>
+                        {{/if}}
+                        {{#if error_msg}}
+                        <div class="alert alert-danger">{{error_msg}}</div>
+                        {{/if}}
+                        {{#if error}}
+                        <div class="alert alert-danger">{{error}}</div>
+                        {{/if}}
+                    </div>
+                </div> --}}
+                <!-- Page Heading -->
+                {{!-- <div class="swiper-container-solution">
+                    <div class="selected-solution">
+                        <div>
+                            <div class="swiper-container">
+                                <div class="layer-title">Dashboard</div>
+                                <div class="solution-cardlist swiper-wrapper">
+                                    {{#each posts}}
+                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
+                                        <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            <h5 class="card-title">{{this.genre}}</h5>
+                                            <p class="card-text">{{this.description}}</p>
+
+                                            <a href="#" class="card-link">Edit</a>
+                                            <a href="#" class="card-link">Delete</a>
+                                            <a href="#" class="card-link">Favorite</a>
+                                            <a href="#" class="card-link">Share</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+
+                                </div>
+                                <div class="swiper-pagination solution-pagination"></div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div> --}}
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    {{#each posts}}
+                    <div class="card-body">
+                        <a href="/dashboard/"{{this.genre}}>
+                            {{this.genre}}
+                        </a>
+                        
+
+                    </div>
+                    {{/each}}
                     
                 </div>
             </div>
@@ -125,11 +183,7 @@
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
-<<<<<<< HEAD
                                     
-=======
-
->>>>>>> 90d26134e163c3cd798d0143aa93ebc6f67bacfd
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
