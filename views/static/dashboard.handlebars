@@ -52,20 +52,16 @@
                         </button>
                     </h2>
                 </div>
+<script>
+    var incomingBookmarkCategory = document.getElementById("bookCategory").innerHTML;
 
+    document.getElementById('bookCategory')
+</script>
                 <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         Video
                     </div>
-                    <div class="card-body">
-                        News
-                    </div>
-                    <div class="card-body">
-                        Games
-                    </div>
-                    <div class="card-body">
-                        Study
-                    </div>
+                    
                 </div>
             </div>
 
@@ -138,6 +134,7 @@
                         </div>
                     </div>
                 </form>
+
                 <!-- Add Url -->
                 <div class="input-group justify-content-end">
                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urlModal">
@@ -159,39 +156,11 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="Bookmark Category">Genre</label>
+                                        <label for="Bookmark Category">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
-                                    <!-- add image File 
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="form-group">
-                                               
-                                                <div class="input-group image-preview">
-                                                    <input type="text" class="form-control image-preview-filename"
-                                                        disabled="disabled" placeholder="Upload image" required>
-                                                  
-                                                    <span class="input-group-btn">
-                                                       
-                                                        <button type="button"
-                                                            class="btn btn-default image-preview-clear"
-                                                            style="display:none;">
-                                                            <span class="glyphicon glyphicon-remove"></span> Clear
-                                                        </button>
-                                                       
-                                                        <div class="btn btn-default image-preview-input">
-                                                            <span class="glyphicon glyphicon-folder-open"></span>
-                                                            <span class="image-preview-input-title">Browse</span>
-                                                            <input id="inputImgFile" name="inputImgFile" type="file" accept="image/png, image/jpeg, image/gif"
-                                                                name="input-file-preview" /> 
-                                                        </div>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    -->
+                                    
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
