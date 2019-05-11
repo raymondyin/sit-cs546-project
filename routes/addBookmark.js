@@ -15,11 +15,10 @@ router.post("/", async (req, res) => {
         req.flash('error_msg', 'Bookmark already exist!');
         res.end('{"failed" : "Updated failed", "status" : 500, "redirect": "/dashboard"}');
     } else {
-        const insertBookmark = await addBookmark.addBookmark(genre, description, url, userId);
-        req.flash('success_msg', 'Bookmark added!');
-        res.end('{"success" : "Updated Successfully", "status" : 200, "redirect": "/dashboard"}');
+            const insertBookmark = await addBookmark.addBookmark(genre, description, url, userId);
+            req.flash('success_msg', 'Bookmark added!');
+            res.end('{"success" : "Updated Successfully", "status" : 200, "redirect": "/dashboard"}');
     }
-
 });
 
 

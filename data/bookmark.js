@@ -30,16 +30,11 @@ async function getBookmarkById(id) {
     const allBookmark = await bookmark.find({ userId: id }).toArray();
     return allBookmark;
 }
-
-//add category to side bar
-// ======================== Shuhao ===============================
+ 
 async function addCategory(genre) {
     const bookmark = await book();
     const categoryInfo = {
         genre: genre
-        // description: description,
-        // url: url,
-        // userId: id
     }
     const insertInfo = await bookmark.insertOne(categoryInfo);
     if (insertInfo.insertedCount === 0) throw "Insert new category failed";
@@ -50,7 +45,7 @@ async function checkCategory(genre) {
     const category = await book();
     const existCategory = await category.findOne({ genre });
     if (existCategory === null) {
-        return true;
+        return true; 
     } else {
         return false;
     }
@@ -124,5 +119,3 @@ module.exports = {
     searchBookmarkByUrl,
     searchBookmarkByDescription
 }
-
-// ======================== Shuhao ===============================
