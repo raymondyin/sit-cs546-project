@@ -295,11 +295,6 @@
                                             <a href="#" class="card-link">Delete</a>
                                             <a href="#" class="card-link">Favorite</a>
                                             <a href="#" class="card-link">Share</a>
-                                        
-                                            <div class="container">
-                                                    <div class="share"></div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     {{/each}}
@@ -368,10 +363,10 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
+
 <script src="js/postBookmark.js"></script>
 <script src="js/jquery-1.11.0.js"></script>
 <script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jssocials.js"></script>
 <script type="text/javascript">
     $(function () {
         new Swiper(".swiper-container", {
@@ -397,14 +392,6 @@
             }
 
         });
-    })
-     $(document).ready(function() {
-        $('.share').jsSocials({
-            shareIn: "popup",
-            showCount: false,
-            showLabel: false,
-            shares: ["twitter", "facebook", "googleplus"]
-        })
     })
 </script>
 
