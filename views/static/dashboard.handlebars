@@ -254,7 +254,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
-                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            <img class="img-profile rounded-circle" src="http://p0.qhimg.com/dr/1080__/t01e8e3c1daa93bfc6c.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -305,7 +305,8 @@
 <!-- dropdown --> --}}
                 <!-- Content Row -->
                 {{#each posts}}  
-                <div class="card" style="width: 18rem;">
+                <div class="card-group"style="width: 18rem;">
+                    <div class = 'card'>
                     <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
                     <div class="card-body">
                         <a class="btn btn-primary" href={{this.url}} role="button">Go</a>                       
@@ -313,6 +314,7 @@
                         <p class="card-text">{{this.description}}</p>
                         
                         <a href="#" class="card-link">Edit</a>
+                        <a href="#" class="card-link">Add To</a>
                         <a href="#" class="card-link">Delete</a>
                         <a href="#" class="card-link">Favorite</a>
                         <a href="#" class="card-link">Share</a>
