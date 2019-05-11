@@ -14,6 +14,24 @@ async function addBookmark(genre, description, url, id) {
     return insertInfo;
 }
 
+async function checkBookmark(url) {
+    const bookmark = await book();
+    const existBookmark = await bookmark.findOne({url});
+    if (existBookmark === null) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+async function getBookmarkById(id) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.find({userId: id}).toArray();
+    return allBookmark;
+}
+ 
 module.exports = {
-    addBookmark
+    addBookmark,
+    checkBookmark,
+    getBookmarkById
 }
