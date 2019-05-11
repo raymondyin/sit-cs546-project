@@ -30,8 +30,41 @@ async function getBookmarkById(id) {
     return allBookmark;
 }
  
+//add category to side bar
+async function addCategory(genre){
+    const bookmark = await book();
+    const categoryInfo = {
+        genre: genre
+        // description: description,
+        // url: url,
+        // userId: id
+    }
+    const insertInfo = await bookmark.insertOne(categoryInfo);
+    if (insertInfo.insertedCount === 0) throw "Insert new category failed";
+    return insertInfo;
+}
+
+async function checkCategory(genre) {
+    const category = await book();
+    const existCategory = await category.findOne({genre});
+    if (existCategory === null) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+async function getCategoryById(id){
+    const category = await book();
+    const allCategory = await category.find({userCategory: genre}).toArray();
+    return allCategory;
+}
+
 module.exports = {
     addBookmark,
     checkBookmark,
-    getBookmarkById
+    getBookmarkById,
+    addCategory,
+    getCategoryById,
+    checkCategory
 }
