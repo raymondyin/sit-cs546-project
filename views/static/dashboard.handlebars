@@ -43,19 +43,28 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <div class="accordion" id="accordionExample">
-            <div class="card">
+            <div class="card d-flex align-items-center justify-content-center">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
-                            Collapsible Group Item #1
+                            Categories
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                    data-parent="#accordionExample">
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
+                        Video
+                    </div>
+                    <div class="card-body">
+                        News
+                    </div>
+                    <div class="card-body">
+                        Games
+                    </div>
+                    <div class="card-body">
+                        Study
                     </div>
                 </div>
             </div>
@@ -308,11 +317,18 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
                     <div class="card-body">
+                        <a class="btn btn-primary" href= "button">Go</a>                       
                         <h5 class="card-title">{{this.genre}}</h5>
-                        <p class="card-text">{{this.description}}</p>
-                        <a href={{this.url}} class="card-link">Go To This link</a>
+                        <p class="card-text">{{this.description}}</p >
+                        
+                        <a href="#" class="card-link">Edit</a>
+                        <a href="#" class="card-link">Delete</a a>
+                        <a href="#" class="card-link">Favorite</a a>
+                        <a href="#" class="card-link">Share</a a>
                     </div>
                 </div>
+
+
                 {{/each}}
 
 
