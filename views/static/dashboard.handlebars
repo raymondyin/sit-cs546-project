@@ -96,6 +96,7 @@
                                             <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
                                             <h5 class="card-title">{{this.genre}}</h5>
                                             <p class="card-text">{{this.description}}</p>
+<<<<<<< HEAD
 
                                             <a href="#" class="card-link">Edit</a>
                                             <a href="#" class="card-link">Delete</a>
@@ -114,6 +115,38 @@
                         </div>
                     </div>
                 </div> --}}
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    {{#each posts}}
+                    <div class="card-body">
+                        <a href="/dashboard/"{{this.genre}}>
+                            {{this.genre}}
+                        </a>
+                        
+
+                    </div>
+                    {{/each}}
+                    
+                </div>
+=======
+
+                                            <a href="#" class="card-link">Edit</a>
+                                            <a href="#" class="card-link">Delete</a>
+                                            <a href="#" class="card-link">Favorite</a>
+                                            <a href="#" class="card-link">Share</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+
+                                </div>
+                                <div class="swiper-pagination solution-pagination"></div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div> --}}
+>>>>>>> df9adb715f6ac2c20c81ea2984ab3b748ec18e2b
             </div>
 
     </ul>
@@ -171,10 +204,25 @@
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
                                     
 =======
 
 >>>>>>> 90d26134e163c3cd798d0143aa93ebc6f67bacfd
+>>>>>>> df9adb715f6ac2c20c81ea2984ab3b748ec18e2b
+=======
+>>>>>>> parent of df9adb7... Revert "remove timeout"
+=======
+>>>>>>> parent of df9adb7... Revert "remove timeout"
+=======
+>>>>>>> parent of df9adb7... Revert "remove timeout"
+=======
+>>>>>>> parent of df9adb7... Revert "remove timeout"
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
@@ -288,17 +336,25 @@
                                 <div class="solution-cardlist swiper-wrapper">
                                     {{#each posts}}
                                     <div class="col-sm-4 swiper-slide" style="width: 18rem;">
-                                        <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg"
+                                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/31x%2Bq3aNVKL._SX425_.jpg"
                                             alt="Card image cap">
                                         <div class="card-body">
-                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            
                                             <h5 class="card-title">{{this.genre}}</h5>
+                                            <hr class="sidebar-divider d-none d-md-block">
                                             <p class="card-text">{{this.description}}</p>
-
-                                            <a href="#" class="card-link">Edit</a>
+                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
+                                                Edit
+                                            </button>
                                             <a href="#" class="card-link">Delete</a>
                                             <a href="#" class="card-link">Favorite</a>
                                             <a href="#" class="card-link">Share</a>
+                                        
+                                            <div class="container">
+                                                    <div class="share"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     {{/each}}
@@ -367,10 +423,10 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-
 <script src="js/postBookmark.js"></script>
 <script src="js/jquery-1.11.0.js"></script>
 <script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jssocials.js"></script>
 <script type="text/javascript">
     $(function () {
         new Swiper(".swiper-container", {
@@ -396,6 +452,14 @@
             }
 
         });
+    })
+     $(document).ready(function() {
+        $('.share').jsSocials({
+            shareIn: "popup",
+            showCount: false,
+            showLabel: false,
+            shares: ["twitter", "facebook", "googleplus"]
+        })
     })
 </script>
 
