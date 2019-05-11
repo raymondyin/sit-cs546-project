@@ -154,35 +154,7 @@
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
-                                    <!-- add image File 
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="form-group">
-                                               
-                                                <div class="input-group image-preview">
-                                                    <input type="text" class="form-control image-preview-filename"
-                                                        disabled="disabled" placeholder="Upload image" required>
-                                                  
-                                                    <span class="input-group-btn">
-                                                       
-                                                        <button type="button"
-                                                            class="btn btn-default image-preview-clear"
-                                                            style="display:none;">
-                                                            <span class="glyphicon glyphicon-remove"></span> Clear
-                                                        </button>
-                                                       
-                                                        <div class="btn btn-default image-preview-input">
-                                                            <span class="glyphicon glyphicon-folder-open"></span>
-                                                            <span class="image-preview-input-title">Browse</span>
-                                                            <input id="inputImgFile" name="inputImgFile" type="file" accept="image/png, image/jpeg, image/gif"
-                                                                name="input-file-preview" /> 
-                                                        </div>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    -->
+
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
@@ -197,7 +169,7 @@
                                         <label for="URL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="bookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
-                                            pattern="https://.*" size="30" required>
+                                            size="30" required>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
@@ -291,28 +263,26 @@
                     <div class="selected-solution">
                         <div>
                             <div class="swiper-container">
-                                <div class="layer-title">Dashboard</div>
+                                <div class="layer-title">解决方案</div>
                                 <div class="solution-cardlist swiper-wrapper">
-                                    <div class="col-sm-4 swiper-slide">
-                                        <div class="solution-card">
-                                            <img src="pic/20161112180454_WwrFN.jpeg" width="100%">
-                                            <h3>智能制造解决方案</h3>
-                                            <p>从研发设计仿真到生产车间现场的全流程数字化、智能化变革，实现敏捷创新、精细化运营。</p>
-                                            <dl class="overflow-hide cf">
-                                                <dt>包含产品</dt>
+                                    {{#each posts}}
+                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
+                                        <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            <h5 class="card-title">{{this.genre}}</h5>
+                                            <p class="card-text">{{this.description}}</p>
 
-                                                <dd>云设计</dd>
-
-                                                <dd>云仿真</dd>
-
-                                            </dl>
-                                            <span><a href="#"><span class="arrow-more">了解详情</span><span
-                                                        class="arrow-f"></span></a>
-                                                </a>
-                                            </span>
+                                            <a href="#" class="card-link">Edit</a>
+                                            <a href="#" class="card-link">Delete</a>
+                                            <a href="#" class="card-link">Favorite</a>
+                                            <a href="#" class="card-link">Share</a>
                                         </div>
                                     </div>
-                                                                              
+                                    {{/each}}
+
+
                                 </div>
                                 <div class="swiper-pagination solution-pagination"></div>
                             </div>
@@ -321,7 +291,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 {{!-- <!-- dropdown -->
                 <div class="dropdown">
@@ -416,34 +386,34 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 <script src="js/postBookmark.js"></script>
-<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-1.11.0.js"></script>
 <script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	$(function() {
-		new Swiper(".swiper-container", {
-		
-		    /*默认功能属性*/
-			speed: 250,
-			slidesPerView: 3,
-			spaceBetween: 0,
-			slidesPerGroup: 3,
-			loop: true,
-			autoplay: true,
-			
-		    /*分页索引*/
-			pagination: {
-				el: ".swiper-pagination",
-				clickable: true
-			},
-			
-		    /*分页按钮*/
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev"
-			}
+    $(function () {
+        new Swiper(".swiper-container", {
 
-		});
-	})
+            /*默认功能属性*/
+            speed: 250,
+            slidesPerView: 3,
+            spaceBetween: 0,
+            slidesPerGroup: 3,
+            loop: true,
+            autoplay: true,
+
+            /*分页索引*/
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+
+            /*分页按钮*/
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+
+        });
+    })
 </script>
 
 <!-- Page level plugins -->
