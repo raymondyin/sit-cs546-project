@@ -43,19 +43,28 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <div class="accordion" id="accordionExample">
-            <div class="card">
+            <div class="card d-flex align-items-center justify-content-center">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
-                            Collapsible Group Item #1
+                            Categories
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                    data-parent="#accordionExample">
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
+                        Video
+                    </div>
+                    <div class="card-body">
+                        News
+                    </div>
+                    <div class="card-body">
+                        Games
+                    </div>
+                    <div class="card-body">
+                        Study
                     </div>
                 </div>
             </div>
@@ -154,35 +163,7 @@
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
-                                    <!-- add image File 
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="form-group">
-                                               
-                                                <div class="input-group image-preview">
-                                                    <input type="text" class="form-control image-preview-filename"
-                                                        disabled="disabled" placeholder="Upload image" required>
-                                                  
-                                                    <span class="input-group-btn">
-                                                       
-                                                        <button type="button"
-                                                            class="btn btn-default image-preview-clear"
-                                                            style="display:none;">
-                                                            <span class="glyphicon glyphicon-remove"></span> Clear
-                                                        </button>
-                                                       
-                                                        <div class="btn btn-default image-preview-input">
-                                                            <span class="glyphicon glyphicon-folder-open"></span>
-                                                            <span class="image-preview-input-title">Browse</span>
-                                                            <input id="inputImgFile" name="inputImgFile" type="file" accept="image/png, image/jpeg, image/gif"
-                                                                name="input-file-preview" /> 
-                                                        </div>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    -->
+
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
@@ -197,7 +178,7 @@
                                         <label for="URL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="bookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
-                                            pattern="https://.*" size="30" required>
+                                            size="30" required>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
@@ -287,9 +268,39 @@
                     </div>
                 </div>
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                <div class="swiper-container-solution">
+                    <div class="selected-solution">
+                        <div>
+                            <div class="swiper-container">
+                                <div class="layer-title">解决方案</div>
+                                <div class="solution-cardlist swiper-wrapper">
+                                    {{#each posts}}
+                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
+                                        <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            <h5 class="card-title">{{this.genre}}</h5>
+                                            <p class="card-text">{{this.description}}</p>
+
+                                            <a href="#" class="card-link">Edit</a>
+                                            <a href="#" class="card-link">Delete</a>
+                                            <a href="#" class="card-link">Favorite</a>
+                                            <a href="#" class="card-link">Share</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+
+                                </div>
+                                <div class="swiper-pagination solution-pagination"></div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
                 </div>
+
 
                 {{!-- <!-- dropdown -->
                 <div class="dropdown">
@@ -303,29 +314,43 @@
   </div>
 </div>
 <!-- dropdown --> --}}
+<<<<<<< HEAD
                 <!-- Content Row -->
                 {{#each posts}}  
                 <div class="card-group"style="width: 18rem;">
                     <div class = 'card'>
+=======
+                <!-- Content Row 
+                {{#each posts}}
+                <div class="card" style="width: 18rem;">
+>>>>>>> 2a23bd65762a4806d6ac176fd770f85648fe3351
                     <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
                     <div class="card-body">
-                        <a class="btn btn-primary" href={{this.url}} role="button">Go</a>                       
+                        <a class="btn btn-primary" href= "button">Go</a>                       
                         <h5 class="card-title">{{this.genre}}</h5>
-                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text">{{this.description}}</p >
                         
                         <a href="#" class="card-link">Edit</a>
+<<<<<<< HEAD
                         <a href="#" class="card-link">Add To</a>
                         <a href="#" class="card-link">Delete</a>
                         <a href="#" class="card-link">Favorite</a>
                         <a href="#" class="card-link">Share</a>
+=======
+                        <a href="#" class="card-link">Delete</a a>
+                        <a href="#" class="card-link">Favorite</a a>
+                        <a href="#" class="card-link">Share</a a>
+>>>>>>> 2a23bd65762a4806d6ac176fd770f85648fe3351
                     </div>
                 </div>
+
+
                 {{/each}}
 
 
 
 
-                <!-- Content Row -->
+                 Content Row -->
 
 
             </div>
@@ -386,5 +411,34 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 <script src="js/postBookmark.js"></script>
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function () {
+        new Swiper(".swiper-container", {
+
+            /*默认功能属性*/
+            speed: 250,
+            slidesPerView: 3,
+            spaceBetween: 0,
+            slidesPerGroup: 3,
+            loop: true,
+            autoplay: true,
+
+            /*分页索引*/
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+
+            /*分页按钮*/
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+
+        });
+    })
+</script>
 
 <!-- Page level plugins -->
