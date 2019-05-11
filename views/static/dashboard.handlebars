@@ -42,25 +42,63 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Type buttom -->
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Collapsible Group Item #1
+                        </button>
+                    </h2>
+                </div>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Tags
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">1</a>
-                <a class="dropdown-item" href="#">2</a>
-                <a class="dropdown-item" href="#">3</a>
-                <a class="dropdown-item" href="#">4</a>
-                <a class="dropdown-item" href="#">5</a>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                    </div>
+                </div>
             </div>
+
+            {{!-- <!-- Type buttom -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+
+                <span>Type 1</span></a>
         </li>
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
+        <!-- Type buttom -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+
+                <span>Type 2</span></a>
+        </li>
+
+        <!-- Type buttom -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+
+                <span>Type 3</span></a>
+        </li>
+
+        <!-- Type buttom -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+
+                <span>Type 4</span></a>
+        </li>
+
+        <!-- Type buttom -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+
+                <span>Type 5</span></a>
+        </li> --}}
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            {{!-- <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+        </div> --}}
 
     </ul>
     <!-- End of Sidebar -->
@@ -91,16 +129,12 @@
                         </div>
                     </div>
                 </form>
-
                 <!-- Add Url -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group justify-content-end">
-                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urlModal">
-                            Add Bookmark
-                        </button>
-                    </div>
-                </form>
-
+                <div class="input-group justify-content-end">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urlModal">
+                        Add Bookmark
+                    </button>
+                </div>
                 <!-- Add url form -->
                 <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel"
                     aria-hidden="true">
@@ -112,65 +146,69 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="Bookmark Category">Category</label>
-                                        <input type="text" class="form-control" id="bookCategory"
-                                            aria-describedby="categoryHelp" placeholder="Bookmark Category....">
+                                        <label for="Bookmark Category">Genre</label>
+                                        <input type="text" class="form-control" name="bookCategory" id="bookCategory"
+                                            aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
-                                    <!-- add image File -->
+                                    <!-- add image File 
                                     <div class="container">
                                         <div class="row">
                                             <div class="form-group">
-                                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                               
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename"
-                                                        disabled="disabled" placeholder="Upload image">
-                                                    <!-- don't give a name === doesn't send on POST/GET -->
+                                                        disabled="disabled" placeholder="Upload image" required>
+                                                  
                                                     <span class="input-group-btn">
-                                                        <!-- image-preview-clear button -->
+                                                       
                                                         <button type="button"
                                                             class="btn btn-default image-preview-clear"
                                                             style="display:none;">
                                                             <span class="glyphicon glyphicon-remove"></span> Clear
                                                         </button>
-                                                        <!-- image-preview-input -->
+                                                       
                                                         <div class="btn btn-default image-preview-input">
                                                             <span class="glyphicon glyphicon-folder-open"></span>
                                                             <span class="image-preview-input-title">Browse</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif"
-                                                                name="input-file-preview" /> <!-- rename it -->
+                                                            <input id="inputImgFile" name="inputImgFile" type="file" accept="image/png, image/jpeg, image/gif"
+                                                                name="input-file-preview" /> 
                                                         </div>
                                                     </span>
-                                                </div><!-- /input-group image-preview [TO HERE]-->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
+                                    -->
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
                                         <label for="Book Description">Content</label>
-                                        <textarea class="form-control" id="bookContent" rows="3"
-                                            placeholder="Enter Description.."></textarea>
+                                        <textarea id="bookDes" name="bookDes" class="form-control" id="bookContent"
+                                            rows="3" placeholder="Enter Description.." required></textarea>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
                                     <!-- URL -->
                                     <div class="form-group">
                                         <label for="URL">Bookmark Url</label>
-                                        <input type="url" class="form-control" id="bookmarkURL"
+                                        <input type="url" class="form-control" id="bookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
-                                            pattern="https://.*" size="30">
+                                            pattern="https://.*" size="30" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" id="closeForm"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" value="save"
+                                            id="saveBookmark">Save</button>
                                     </div>
 
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -216,7 +254,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
-                            <img class="img-profile rounded-circle" src="http://weknowyourdreams.com/images/batman/batman-11.jpg">
+                            <img class="img-profile rounded-circle" src="http://p0.qhimg.com/dr/1080__/t01e8e3c1daa93bfc6c.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -235,54 +273,57 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{#if success_msg}}
+                        <div class="alert alert-success">{{success_msg}}</div>
+                        {{/if}}
+                        {{#if error_msg}}
+                        <div class="alert alert-danger">{{error_msg}}</div>
+                        {{/if}}
+                        {{#if error}}
+                        <div class="alert alert-danger">{{error}}</div>
+                        {{/if}}
+                    </div>
+                </div>
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                 </div>
 
+                {{!-- <!-- dropdown -->
+                <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+<!-- dropdown --> --}}
                 <!-- Content Row -->
-
-
-
-                <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
+                {{#each posts}}  
+                <div class="card-group"style="width: 18rem;">
+                    <div class = 'card'>
+                    <img class="card-img-top" src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/10304435_748319905233469_7128357221168518790_n.jpg?_nc_cat=1&_nc_oc=AQnvahHs3smjcVlC0uv1qLGTYSgmIbn4dZ6m_2isLWztPYmIlOkJag1KzvPyBEy6eaU&_nc_ht=scontent-lga3-1.xx&oh=1801705f7458d9e2d3fd91b22a90c88a&oe=5D6D7FCA" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    </div>
-                </div>
-<<<<<<< HEAD
-
-                <div class="card" id="card2" style="width: 18rem;">
-                    <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <input type="button" onclick="removeElement()" value="Delete" />
+                        <a class="btn btn-primary" href={{this.url}} role="button">Go</a>                       
+                        <h5 class="card-title">{{this.genre}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        
+                        <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
+                            Edit
+                        </button>
+                        <a href="#" class="card-link">Add To</a>
+                        <a href="#" class="card-link">Delete</a>
                         <a href="#" class="card-link">Favorite</a>
-=======
-                <div class="col-sm-6">
-                    <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">edit</a>
-                        <a href="#" class="btn btn-primary">delete</a>
-                        <a href="#" class="btn btn-primary">Favorite</a>
-                        <a href="#" class="btn btn-primary">share</a>
->>>>>>> 8c4e395fa24b6f0a4ec880108bc3fb9d25251106
-                    </div>
+                        <a href="#" class="card-link">Share</a>
                     </div>
                 </div>
-                </div>
+                {{/each}}
 
-                <!-- Content Row -->
 
 
 
@@ -345,6 +386,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-<script src="js/dashboard.js"></script>
+
+<script src="js/postBookmark.js"></script>
 
 <!-- Page level plugins -->
