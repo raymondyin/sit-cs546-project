@@ -308,9 +308,14 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
                     <div class="card-body">
+                        <a class="btn btn-primary" href={{this.url}} role="button">Go</a>                       
                         <h5 class="card-title">{{this.genre}}</h5>
                         <p class="card-text">{{this.description}}</p>
-                        <a href={{this.url}} class="card-link">Go To This link</a>
+                        
+                        <a href="#" class="card-link">Edit</a>
+                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link">Favorite</a>
+                        <a href="#" class="card-link">Share</a>
                     </div>
                 </div>
                 {{/each}}
