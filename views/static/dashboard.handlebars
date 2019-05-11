@@ -296,9 +296,41 @@
                     </div>
                 </div>
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                <div class="swiper-container-solution">
+                    <div class="selected-solution">
+                        <div>
+                            <div class="swiper-container">
+                                <div class="layer-title">Dashboard</div>
+                                <div class="solution-cardlist swiper-wrapper">
+                                    <div class="col-sm-4 swiper-slide">
+                                        <div class="solution-card">
+                                            <img src="pic/20161112180454_WwrFN.jpeg" width="100%">
+                                            <h3>智能制造解决方案</h3>
+                                            <p>从研发设计仿真到生产车间现场的全流程数字化、智能化变革，实现敏捷创新、精细化运营。</p>
+                                            <dl class="overflow-hide cf">
+                                                <dt>包含产品</dt>
+
+                                                <dd>云设计</dd>
+
+                                                <dd>云仿真</dd>
+
+                                            </dl>
+                                            <span><a href="#"><span class="arrow-more">了解详情</span><span
+                                                        class="arrow-f"></span></a>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                                                              
+                                </div>
+                                <div class="swiper-pagination solution-pagination"></div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
                 </div>
+                
 
                 {{!-- <!-- dropdown -->
                 <div class="dropdown">
@@ -312,8 +344,8 @@
   </div>
 </div>
 <!-- dropdown --> --}}
-                <!-- Content Row -->
-                {{#each posts}}  
+                <!-- Content Row 
+                {{#each posts}}
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
                     <div class="card-body">
@@ -334,7 +366,7 @@
 
 
 
-                <!-- Content Row -->
+                 Content Row -->
 
 
             </div>
@@ -395,5 +427,34 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 <script src="js/postBookmark.js"></script>
+<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		new Swiper(".swiper-container", {
+		
+		    /*默认功能属性*/
+			speed: 250,
+			slidesPerView: 3,
+			spaceBetween: 0,
+			slidesPerGroup: 3,
+			loop: true,
+			autoplay: true,
+			
+		    /*分页索引*/
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true
+			},
+			
+		    /*分页按钮*/
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev"
+			}
+
+		});
+	})
+</script>
 
 <!-- Page level plugins -->
