@@ -20,7 +20,7 @@ router.get('/', sessionChecker, async (req, res) => {
     const userPersonalInfo = await userInfo.getUserById(userID);
     const userFN = userPersonalInfo.profile.firstName;
     const allBookmark = await bookmark.getBookmarkById(req.session.passport.user);
-    console.log(allBookmark);
+    //console.log(allBookmark);
     let genre = [];
     for (let i in allBookmark) {
         if (!genre.includes(allBookmark[i].genre)) {
