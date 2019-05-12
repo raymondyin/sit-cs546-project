@@ -7622,71 +7622,71 @@ jQuery.each({
 	};
 });
 
-// jQuery.timers = [];
-// jQuery.fx.tick = function() {
-// 	var timer,
-// 		timers = jQuery.timers,
-// 		i = 0;
+jQuery.timers = [];
+jQuery.fx.tick = function() {
+	var timer,
+		timers = jQuery.timers,
+		i = 0;
 
-// 	fxNow = jQuery.now();
+	fxNow = jQuery.now();
 
-// 	for ( ; i < timers.length; i++ ) {
-// 		timer = timers[ i ];
-// 		// Checks the timer has not already been removed
-// 		if ( !timer() && timers[ i ] === timer ) {
-// 			timers.splice( i--, 1 );
-// 		}
-// 	}
+	for ( ; i < timers.length; i++ ) {
+		timer = timers[ i ];
+		// Checks the timer has not already been removed
+		if ( !timer() && timers[ i ] === timer ) {
+			timers.splice( i--, 1 );
+		}
+	}
 
-// 	if ( !timers.length ) {
-// 		jQuery.fx.stop();
-// 	}
-// 	fxNow = undefined;
-// };
+	if ( !timers.length ) {
+		jQuery.fx.stop();
+	}
+	fxNow = undefined;
+};
 
-// jQuery.fx.timer = function( timer ) {
-// 	jQuery.timers.push( timer );
-// 	if ( timer() ) {
-// 		jQuery.fx.start();
-// 	} else {
-// 		jQuery.timers.pop();
-// 	}
-// };
+jQuery.fx.timer = function( timer ) {
+	jQuery.timers.push( timer );
+	if ( timer() ) {
+		jQuery.fx.start();
+	} else {
+		jQuery.timers.pop();
+	}
+};
 
-// jQuery.fx.interval = 13;
+jQuery.fx.interval = 13;
 
-// jQuery.fx.start = function() {
-// 	if ( !timerId ) {
-// 		timerId = setInterval( jQuery.fx.tick, jQuery.fx.interval );
-// 	}
-// };
+jQuery.fx.start = function() {
+	if ( !timerId ) {
+		timerId = setInterval( jQuery.fx.tick, jQuery.fx.interval );
+	}
+};
 
-// jQuery.fx.stop = function() {
-// 	clearInterval( timerId );
-// 	timerId = null;
-// };
+jQuery.fx.stop = function() {
+	clearInterval( timerId );
+	timerId = null;
+};
 
-// jQuery.fx.speeds = {
-// 	slow: 600,
-// 	fast: 200,
-// 	// Default speed
-// 	_default: 400
-// };
+jQuery.fx.speeds = {
+	slow: 600,
+	fast: 200,
+	// Default speed
+	_default: 400
+};
 
 
-// // Based off of the plugin by Clint Helfers, with permission.
-// // http://blindsignals.com/index.php/2009/07/jquery-delay/
-// jQuery.fn.delay = function( time, type ) {
-// 	time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
-// 	type = type || "fx";
+// Based off of the plugin by Clint Helfers, with permission.
+// http://blindsignals.com/index.php/2009/07/jquery-delay/
+jQuery.fn.delay = function( time, type ) {
+	time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
+	type = type || "fx";
 
-// 	return this.queue( type, function( next, hooks ) {
-// 		var timeout = setTimeout( next, time );
-// 		hooks.stop = function() {
-// 			clearTimeout( timeout );
-// 		};
-// 	});
-// };
+	return this.queue( type, function( next, hooks ) {
+		var timeout = setTimeout( next, time );
+		hooks.stop = function() {
+			clearTimeout( timeout );
+		};
+	});
+};
 
 
 (function() {
