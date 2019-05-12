@@ -51,73 +51,12 @@
                         </button>
                     </h2>
                 </div>
-                {{!-- ============= shuhao ============= --}}
-                {{!-- <script>
-                    var incomingBookmarkCategory = document.getElementById("bookCategory").innerHTML;
-
-                    document.getElementById('bookCategory')
-                </script>
-                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        Video
-                    </div>
-                    
-                </div>
-            </div> --}}
-
-                <!-- Begin Category Content -->
-                {{!-- <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        {{#if success_msg_addCategory}}
-                        <div class="alert alert-success">{{success_msg}}</div>
-                        {{/if}}
-                        {{#if error_msg_addCategory}}
-                        <div class="alert alert-danger">{{error_msg}}</div>
-                        {{/if}}
-                        {{#if error}}
-                        <div class="alert alert-danger">{{error}}</div>
-                        {{/if}}
-                    </div>
-                </div> --}}
-                <!-- Page Heading -->
-                {{!-- <div class="swiper-container-solution">
-                    <div class="selected-solution">
-                        <div>
-                            <div class="swiper-container">
-                                <div class="layer-title">Dashboard</div>
-                                <div class="solution-cardlist swiper-wrapper">
-                                    {{#each posts}}
-                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
-                                        <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
-                                            <h5 class="card-title">{{this.genre}}</h5>
-                                            <p class="card-text">{{this.description}}</p>
-
-                                            <a href="#" class="card-link">Edit</a>
-                                            <a href="#" class="card-link">Delete</a>
-                                            <a href="#" class="card-link">Favorite</a>
-                                            <a href="#" class="card-link">Share</a>
-                                        </div>
-                                    </div>
-                                    {{/each}}
-
-
-                                </div>
-                                <div class="swiper-pagination solution-pagination"></div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div> --}}
+                
                 <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
                     {{#each cata}}
                     <div class="card-body align-items-center justify-content-center">
-                        <a href="/dashboard?{{this}}">
+                        <a href="/dashboard?catalog={{this}}">
                             {{this}}
                         </a>
                     </div>

@@ -5,6 +5,7 @@ const passport = require("passport");
 
 const userInfo = data.userData;
 const bookmark = data.bookmark;
+const xss = require("xss");
 
 var sessionChecker = async (req, res, next) => {
     if (req.session.passport) {
@@ -27,7 +28,13 @@ router.get('/', sessionChecker, async (req, res) => {
             genre.push(allBookmark[i].genre);
         }
     }
-    res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
+    console.log(req.query);
+    // if ((req.query).length !== "") {
+    //     const genre = xss(req.query.catalog);
+    //     console.log(genre);
+    // } else {
+        res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
+    // }
 });
 
 module.exports = router;
