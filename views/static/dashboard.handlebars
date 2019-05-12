@@ -22,13 +22,13 @@
                 <span>Dashboard</span></a>
         </li>
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        {{!-- <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
                 <span>Your List</span>
             </a>
 
-        </li>
+        </li> --}}
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
@@ -60,6 +60,9 @@
                             {{this}}
                         </a>
                     </div>
+                    <script>
+                        {{this}}.sort();
+                    </script>
                     {{/each}}
 
                 </div>
@@ -122,9 +125,9 @@
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
-                                        <label for="Book Description">Content</label>
+                                        <label for="Book Description">Note</label>
                                         <textarea id="bookDes" name="bookDes" class="form-control" id="bookContent"
-                                            rows="3" placeholder="Enter Description.." required></textarea>
+                                            rows="3" placeholder="Enter Notes..." required></textarea>
                                     </div>
 
                                     <div class="dropdown-divider"></div>

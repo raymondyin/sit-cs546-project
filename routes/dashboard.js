@@ -26,6 +26,7 @@ router.get('/', sessionChecker, async (req, res) => {
     for (let i in allBookmark) {
         if (!genre.includes(allBookmark[i].genre)) {
             genre.push(allBookmark[i].genre);
+            genre.sort();
         }
     }
     console.log(req.query);
