@@ -25,6 +25,7 @@ router.get('/', sessionChecker, async (req, res) => {
     for (let i in allBookmark) {
         if (!genre.includes(allBookmark[i].genre)) {
             genre.push(allBookmark[i].genre);
+            genre.sort();
         }
     }
     res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
