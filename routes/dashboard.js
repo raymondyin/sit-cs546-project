@@ -32,7 +32,7 @@ router.get('/', sessionChecker, async (req, res) => {
     if (xss(req.query.catalog)) {
         const getGenre = xss(req.query.catalog);
         const userBookmark = await bookmark.findAllbyGenreId(userID, getGenre);
-        console.log(userBookmark);
+        //console.log(userBookmark);
         res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: userBookmark, cata: genre});
     } else {
         res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
