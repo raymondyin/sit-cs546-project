@@ -100,7 +100,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add new Bookmark</h5>
+                                <h5 class="modal-title" id="urlModalLabel">Add new Bookmark</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -212,7 +212,7 @@
                                 <h5>{{this.genre}}</h5>
                                 <h5>{{this.description}}</h5>
                                 <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go To URL</a>
-                                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
+                                <button class="btn btn-link EditBtn" type="button" onclick="modalshow('{{this.genre}}', '{{this.description}}', '{{this.url}}');">
                                     Edit
                                 </button>
 
@@ -308,6 +308,13 @@
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
 <script defer type="text/javascript">
+    function modalshow(genre, des, url) {
+        $('#bookCategory').val(genre);
+        $('#bookDes').text(des);
+        $('#bookmarkURL').val(url);
+        $('#urlModalLabel').text('Edit Bookmark');
+        $('#urlModal').modal('show');
+    }
     $(document).ready(function () {
         $('.share').jsSocials({
             shareIn: "popup",
