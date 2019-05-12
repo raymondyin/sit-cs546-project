@@ -29,12 +29,14 @@ router.get('/', sessionChecker, async (req, res) => {
             genre.sort();
         }
     }
-    console.log(req.query);
-    // if ((req.query).length !== "") {
-    //     const genre = xss(req.query.catalog);
-    //     console.log(genre);
-    // } else {
+    if (xss(req.query.catalog)) {
+        const getGenre = xss(req.query.catalog);
+        const userBookmark = await bookmark.findAllbyGenreId(userID, getGenre);
+        console.log(userBookmark);
+        res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: userBookmark, cata: genre});
+    } else {
         res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
+    }
     // }
 });
 
