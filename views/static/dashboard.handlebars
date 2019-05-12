@@ -57,6 +57,15 @@
                     {{/each}}
 
                 </div>
+            </div>
+        </div>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
     </ul>
 
     <!-- Content Wrapper -->
@@ -232,12 +241,26 @@
                                             <h5 class="card-title">{{this.genre}}</h5>
                                             <hr class="sidebar-divider d-none d-md-block">
                                             <p class="card-text">{{this.description}}</p>
-                                            <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go</a>
+                                            <a class="btn btn-primary" href={{this.url}} role="button">Go To URL</a>
                                             <button class="btn btn-link" type="button" data-toggle="modal"
                                                 data-target="#urlModal">
                                                 Edit
                                             </button>
-                                            <a href="#" class="card-link">Delete</a>
+                                            
+                                            <!-- Delete Button and Modal START-->
+                                            <button id="delete-bookmark-op" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
+                                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <!-- Delete Button and Modal END-->
+
                                             <a href="#" class="card-link">Favorite</a>
 
 
@@ -377,6 +400,7 @@
     </div>
 </div>
 
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -402,8 +426,7 @@
             slidesPerView: 3,
             spaceBetween: 10 %,
             slidesPerGroup: 3,
-            loop: true,
-            autoplay: true,
+            autoplay: false,
 
             /*分页索引*/
             pagination: {
