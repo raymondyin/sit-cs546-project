@@ -193,6 +193,25 @@
             </nav>
             <!-- End of Topbar -->
 
+            <!-- Start of delete modal -->
+            <div class="modal fade bd-example-modal-sm" id="deleteModal" tabindex="-1" role="dialog"
+                aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sure to Delete?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger" id="delete-bookmark-op">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -216,27 +235,10 @@
                                 </button>
 
 
-                                <!-- START Delete Button and Modal -->
+                                <!-- START Delete Button -->
                                 <button type="button" class="btn btn-primary"
                                     data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
-                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sure to Delete?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger" id="delete-bookmark-op">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END Delete Button and Modal -->
+                                <!-- END Delete Button -->
 
 
                                 <a href="#" class="card-link">Favorite</a>
@@ -307,6 +309,7 @@
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
 <script defer type="text/javascript">
+    function deleteMark(gener)
     function modalshow(genre, des, url) {
         $('#bookCategory').val(genre);
         $('#bookDes').text(des);
