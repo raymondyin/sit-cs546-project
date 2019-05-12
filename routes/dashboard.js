@@ -5,7 +5,6 @@ const passport = require("passport");
 
 const userInfo = data.userData;
 const bookmark = data.bookmark;
-const xss = require("xss");
 
 var sessionChecker = async (req, res, next) => {
     if (req.session.passport) {
@@ -24,20 +23,12 @@ router.get('/', sessionChecker, async (req, res) => {
     //console.log(allBookmark);
     let genre = [];
     for (let i in allBookmark) {
-        if (!genre.includes(allBookmark[i]["genre"])) {
-            genre.push(allBookmark[i]["genre"]);
+        if (!genre.includes(allBookmark[i].genre)) {
+            genre.push(allBookmark[i].genre);
             genre.sort();
         }
     }
-    if (xss(req.query.catalog)) {
-        const getGenre = xss(req.query.catalog);
-        const userBookmark = await bookmark.findAllbyGenreId(userID, getGenre);
-        console.log(userBookmark);
-        res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: userBookmark, cata: genre});
-    } else {
-        res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
-    }
-    // }
+    res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
 });
 
 module.exports = router;

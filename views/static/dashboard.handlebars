@@ -17,10 +17,18 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="/dashboard" onclick="gotoType(1)">
+            <a class="nav-link" href=" " onclick="gotoType(1)">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
+
+        {{!-- <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <span>Your List</span>
+            </a>
+
+        </li> --}}
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
@@ -32,6 +40,7 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+
         <div class="accordion" id="accordionExample">
             <div class="card d-flex align-items-center justify-content-center">
                 <div class="card-header" id="headingOne">
@@ -42,21 +51,86 @@
                         </button>
                     </h2>
                 </div>
+                {{!-- ============= shuhao ============= --}}
+                {{!-- <script>
+                    var incomingBookmarkCategory = document.getElementById("bookCategory").innerHTML;
 
+                    document.getElementById('bookCategory')
+                </script>
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Video
+                    </div>
+                    
+                </div>
+            </div> --}}
+
+                <!-- Begin Category Content -->
+                {{!-- <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{#if success_msg_addCategory}}
+                        <div class="alert alert-success">{{success_msg}}</div>
+                        {{/if}}
+                        {{#if error_msg_addCategory}}
+                        <div class="alert alert-danger">{{error_msg}}</div>
+                        {{/if}}
+                        {{#if error}}
+                        <div class="alert alert-danger">{{error}}</div>
+                        {{/if}}
+                    </div>
+                </div> --}}
+                <!-- Page Heading -->
+                {{!-- <div class="swiper-container-solution">
+                    <div class="selected-solution">
+                        <div>
+                            <div class="swiper-container">
+                                <div class="layer-title">Dashboard</div>
+                                <div class="solution-cardlist swiper-wrapper">
+                                    {{#each posts}}
+                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
+                                        <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            <h5 class="card-title">{{this.genre}}</h5>
+                                            <p class="card-text">{{this.description}}</p>
+
+                                            <a href="#" class="card-link">Edit</a>
+                                            <a href="#" class="card-link">Delete</a>
+                                            <a href="#" class="card-link">Favorite</a>
+                                            <a href="#" class="card-link">Share</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+
+                                </div>
+                                <div class="swiper-pagination solution-pagination"></div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div> --}}
                 <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
                     {{#each cata}}
                     <div class="card-body align-items-center justify-content-center">
-                        <a href="/dashboard?catalog={{this}}">
+                        <a href="/dashboard?{{this}}">
                             {{this}}
                         </a>
                     </div>
                     <script>
-                        //{{this}}.sort();
+                        {{this}}.sort();
                     </script>
                     {{/each}}
 
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c89dc10... Merge branch 'Edward' of https://github.com/raymondyin/sit-cs546-project into Edward
     </ul>
 
     <!-- Content Wrapper -->
@@ -171,9 +245,12 @@
 
                     <!-- Nav Item - AddURL Dropdown (Visible Only XS) -->
 
+
                     <!-- Nav Item - Alerts -->
 
                     <!-- Nav Item - Messages -->
+
+
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
@@ -221,10 +298,13 @@
                             <div class="layer-title">Dashboard</div>
                             <div class="swiper-container">
                                 <div class="solution-cardlist swiper-wrapper">
-
                                     {{#each posts}}
+<<<<<<< HEAD
 
                                     <div class="swiper-slide" style="width: 18rem;">
+=======
+                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
+>>>>>>> parent of c89dc10... Merge branch 'Edward' of https://github.com/raymondyin/sit-cs546-project into Edward
                                         <img class="card-img-top"
                                             src="https://images-na.ssl-images-amazon.com/images/I/31x%2Bq3aNVKL._SX425_.jpg"
                                             alt="Card image cap">
@@ -281,8 +361,8 @@
                                         </div>
                                     </div>
 
-                                    {{/each}}
 
+                                    {{/each}}
                                 </div>
                                 <div class="swiper-pagination solution-pagination"></div>
                             </div>
@@ -428,7 +508,8 @@
             slidesPerView: 3,
             spaceBetween: 10 %,
             slidesPerGroup: 3,
-            autoplay: false,
+            loop: true,
+            autoplay: true,
 
             /*分页索引*/
             pagination: {

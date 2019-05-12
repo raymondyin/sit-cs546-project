@@ -30,12 +30,6 @@ async function getBookmarkById(id) {
     const allBookmark = await bookmark.find({ userId: id }).toArray();
     return allBookmark;
 }
-
-async function findAllbyGenreId(id, genre) {
-    const bookmark = await book();
-    const allBookmark = await bookmark.find({userId: id, genre: genre}).toArray();
-    return allBookmark;
-}
  
 async function addCategory(genre) {
     const bookmark = await book();
@@ -63,37 +57,6 @@ async function getCategoryById(id, genre) {
     return allCategory;
 }
 
-// Search for genre, url and description of any bookmark that contains the input string as a substring
-async function searchBookmark(searchStr, userId) {
-    if (typeof searchStr !== String) throw "Url is not a string!";
-    if (!searchStr || searchStr.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let searchResultByBookmarkId = new Set();
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let bookmarkIdStr = bookmarkCollections._id.str;
-        let userId = bookmarkCollections[i].userId;
-        let tag = bookmarkCollections[i].genre;
-        let url = bookmarkCollections[i].url;
-        let description = bookmarkCollections[i].description;
-        if (userId === currUserId.str) {
-            if (tag.includes(searchStr)) {
-                searchResultByBookmarkId.add(bookmarkIdStr);
-            }
-            if (url.includes(searchStr)) {
-                searchResultByBookmarkId.add(bookmarkIdStr);
-            }
-            if (description.includes(searchStr)) {
-                searchResultByBookmarkId.add(bookmarkIdStr);
-            }
-        }
-    }
-
-    return searchResultByBookmarkId;
-}
-
-/*
 async function searchBookmarkByTag(tag, userId) {
     if (typeof tag !== String) throw "Tag is not a string!";
     if (!tag || tag.length === 0) throw "Missing tag for bookmarkSearchByTag()!";
@@ -144,7 +107,6 @@ async function searchBookmarkByDescription(description, userId) {
     }
     return descriptionSearchResult;
 }
-*/
 
 module.exports = {
     addBookmark,
@@ -153,6 +115,12 @@ module.exports = {
     addCategory,
     getCategoryById,
     checkCategory,
+<<<<<<< HEAD
     searchBookmark,
     findAllbyGenreId
+=======
+    searchBookmarkByTag,
+    searchBookmarkByUrl,
+    searchBookmarkByDescription
+>>>>>>> parent of c89dc10... Merge branch 'Edward' of https://github.com/raymondyin/sit-cs546-project into Edward
 }
