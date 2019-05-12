@@ -248,7 +248,7 @@
 
 
                                 <!-- Favorite Button -->
-                                <button id="favorite-bookmark-op" type="button" class="btn btn-primary">Add To Favorite</button>
+                                <button type="button" class="btn btn-primary" onclick="addfavorite('{{this.genre}}', '{{this.description}}', '{{this.url}}');">Add To Favorite</button>
 
                                 <div class="container">
                                     <div class="share"></div>
@@ -315,7 +315,9 @@
 <script defer src="js/postBookmark.js"></script>
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
+<script defer src="js/addFavorite.js"></script>
 <script defer type="text/javascript">
+    function 
     $(document).ready(function () {
         $('.share').jsSocials({
             shareIn: "popup",

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const login = require("./login");
 const dashboard = require("./dashboard");
 const addBookmark = require("./addBookmark");
-
+const addfavorite = require("./addfavorite");
 
 const constructorMethod = app => {
 
@@ -17,6 +17,7 @@ const constructorMethod = app => {
     app.use("/login", login);
     app.use('/dashboard', dashboard);
     app.use("/addBookmark", addBookmark);
+    app.use("/addfavorite", addfavorite);
     
 
 
