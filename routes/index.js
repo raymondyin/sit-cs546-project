@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const login = require("./login");
 const dashboard = require("./dashboard");
 const addBookmark = require("./addBookmark");
+const deleteBookmark = require("./deleteBookmark");
 
 
 const constructorMethod = app => {
@@ -17,8 +18,7 @@ const constructorMethod = app => {
     app.use("/login", login);
     app.use('/dashboard', dashboard);
     app.use("/addBookmark", addBookmark);
-    
-
+    app.use("/deleteBookmark", deleteBookmark);
 
 app.get('/logout', (req, res) => {
   req.session.destroy();

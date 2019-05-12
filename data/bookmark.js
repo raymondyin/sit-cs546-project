@@ -146,8 +146,23 @@ async function searchBookmarkByDescription(description, userId) {
 }
 */
 
+async deleteBookmarkByID(id){
+    if (!id) throw "You must provide an id to search for";
+    
+    const bookmarkCollection = await book();
+    const bookmarkToBeDelated = await bookmarkCollection.findOne({userId: id});
+
+    const deletionInfo = await animalsCollection.removeOne({ _id: ObjectID(id) });
+
+    if (deletionInfo.deletedCount === 0) {
+        throw `Could not delete bookmark with id of ${id}`;
+    }
+    return bookmarkToBeDelated;
+}
+
 module.exports = {
     addBookmark,
+    deleteBookmarkByID,
     checkBookmark,
     getBookmarkById,
     addCategory,
