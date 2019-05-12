@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("form").on('submit', function(event) {
+    $("#submit-url").on('submit', function (event) {
         event.preventDefault();
         var genre = $("#bookCategory").val().toLowerCase(),
             description = $("#bookDes").val(),
@@ -25,8 +25,3 @@ $(document).ready(function () {
         return false;
     });
 });
-
-
-
-
-
