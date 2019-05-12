@@ -115,12 +115,7 @@ module.exports = {
     addCategory,
     getCategoryById,
     checkCategory,
-<<<<<<< HEAD
-    searchBookmark,
-    findAllbyGenreId
-=======
     searchBookmarkByTag,
     searchBookmarkByUrl,
     searchBookmarkByDescription
->>>>>>> parent of c89dc10... Merge branch 'Edward' of https://github.com/raymondyin/sit-cs546-project into Edward
 }
