@@ -1,7 +1,7 @@
 const mongoCollections = require("./collections.js");
 const users = mongoCollections.Users;
 const bcrypt = require("bcrypt");
-const saltRounds = 16;
+const saltRounds = 6;
 async function create(fname, lname, age, gender, city, state, country, email, phoneNumber, passWord) {
     const hashedPW = await bcrypt.hash(passWord, saltRounds);
     const usersCollection = await users();
@@ -17,8 +17,7 @@ async function create(fname, lname, age, gender, city, state, country, email, ph
         country: country,
         Email: email,
         phoneNumber: phoneNumber,
-        }, 
-        bookmark: []
+        }
     };
 //   console.log(userProfile);
     const insertInfo = await usersCollection.insertOne(userProfile);
@@ -29,7 +28,6 @@ async function create(fname, lname, age, gender, city, state, country, email, ph
 async function findExist(email) {  
     const userInfo = await users();
     const currUser = await userInfo.findOne({"profile.Email": email});
-    console.log(currUser);
     if (currUser == null)
         return false;
     else 
