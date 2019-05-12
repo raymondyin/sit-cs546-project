@@ -199,103 +199,8 @@
             </nav>
             <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        {{#if success_msg}}
-                        <div class="alert alert-success">{{success_msg}}</div>
-                        {{/if}}
-                        {{#if error_msg}}
-                        <div class="alert alert-danger">{{error_msg}}</div>
-                        {{/if}}
-                        {{#if error}}
-                        <div class="alert alert-danger">{{errosr}}</div>
-                        {{/if}}
-                    </div>
-                </div>
-                <!-- Page Heading -->
-                <div class="swiper-container-solution">
-                    <div class="selected-solution">
-                        <div>
-                            <div class="layer-title">Dashboard</div>
-                            <div class="swiper-container">
-                                <div class="solution-cardlist swiper-wrapper">
-
-                                    {{#each posts}}
-
-                                    <div class="swiper-slide" style="width: 18rem;">
-                                        <img class="card-img-top"
-                                            src="https://images-na.ssl-images-amazon.com/images/I/31x%2Bq3aNVKL._SX425_.jpg"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-
-                                            <h5 class="card-title">{{this.genre}}</h5>
-                                            <hr class="sidebar-divider d-none d-md-block">
-                                            <p class="card-text">{{this.description}}</p>
-                                            <a class="btn btn-primary" href={{this.url}} target="_blank"
-                                                role="button">Go</a>
-                                            <button class="btn btn-link" type="button" data-toggle="modal"
-                                                data-target="#urlModal">
-                                                Edit
-                                            </button>
-
-                                            <a href="#" class="card-link">Favorite</a>
-
-
-                                            <!-- Delete Button and Modal START-->
-                                            <button id="delete-bookmark-button" type="button" class="btn btn-primary"
-                                                data-toggle="modal" data-target="#deletion-modal">Delete</button>
-                                            <div id="deletion-modal" class="modal fade bd-example-modal-sm"
-                                                tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-                                                aria-hidden="true">
-                                                <div class="modal-dialog modal-sm">
-                                                    <div class="modal-content">
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save
-                                                                changes</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Delete Button and Modal END-->
-
-                                            <!-- Large modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target=".bd-example-modal-lg">Large modal</button>
-
-                                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                                                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="container">
-                                                <div class="share"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{/each}}
-
-                                </div>
-                                <div class="swiper-pagination solution-pagination"></div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-        {{!-- <!-- Page Heading -->
+            
+        <!-- Page Heading -->
             <div class="swiper-container-solution">
                 <div class="selected-solution">
                     <div>
@@ -359,11 +264,13 @@
             </div>
         </div>
     </div>
- --}}
+    <!-- End of Main Content -->
 
-        <!-- End of Main Content -->
-    </div>
     <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -373,10 +280,6 @@
         </div>
     </footer>
     <!-- End of Footer -->
-
-</div>
-<!-- End of Page Wrapper -->
-
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
