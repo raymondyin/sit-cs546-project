@@ -1,26 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const data = require("../data");
-const passport = require("passport")
+const data = require("../data");;
+const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const RememberMeStrategy = require('passport-remember-me').Strategy;
 const xss = require("xss");
 const user = data.userData;
 
 
-var sessionChecker = async (req, res, next) => {
-    if (req.session.passport) {
-        next();
-    } else {
-        res.redirect('/login');
-    }    
-};
 
 router.get("/", async (req, res) => {
     if (req.session.passport) {
         res.redirect('/dashboard');
     } else {
-        res.render("static/login");
+        res.render("static/login", {title: "Login"});
     }
 });
 
