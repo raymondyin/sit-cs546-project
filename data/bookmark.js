@@ -30,6 +30,12 @@ async function getBookmarkById(id) {
     const allBookmark = await bookmark.find({ userId: id }).toArray();
     return allBookmark;
 }
+
+async function findAllbyGenreId(id, genre) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.find({userId: id, genre: genre}).toArray();
+    return allBookmark;
+}
  
 async function addCategory(genre) {
     const bookmark = await book();
