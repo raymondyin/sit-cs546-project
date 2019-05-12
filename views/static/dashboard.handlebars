@@ -42,7 +42,7 @@
                         </button>
                     </h2>
                 </div>
-
+                
                 <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
                     {{#each cata}}
@@ -57,15 +57,6 @@
                     {{/each}}
 
                 </div>
-            </div>
-        </div>
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
     </ul>
 
     <!-- Content Wrapper -->
@@ -241,7 +232,7 @@
                                             <h5 class="card-title">{{this.genre}}</h5>
                                             <hr class="sidebar-divider d-none d-md-block">
                                             <p class="card-text">{{this.description}}</p>
-                                            <a class="btn btn-primary" href={{this.url}} role="button">Go To URL</a>
+                                            <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go</a>
                                             <button class="btn btn-link" type="button" data-toggle="modal"
                                                 data-target="#urlModal">
                                                 Edit

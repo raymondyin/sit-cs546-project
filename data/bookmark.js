@@ -153,5 +153,6 @@ module.exports = {
     addCategory,
     getCategoryById,
     checkCategory,
-    searchBookmark
+    searchBookmark,
+    findAllbyGenreId
 }
