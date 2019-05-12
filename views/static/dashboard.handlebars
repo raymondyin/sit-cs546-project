@@ -58,6 +58,7 @@
 
                 </div>
     </ul>
+    <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -169,13 +170,6 @@
                         </div>
                     </li>
 
-                    <!-- Nav Item - AddURL Dropdown (Visible Only XS) -->
-
-                    <!-- Nav Item - Alerts -->
-
-                    <!-- Nav Item - Messages -->
-                    <div class="topbar-divider d-none d-sm-block"></div>
-
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -199,87 +193,72 @@
             </nav>
             <!-- End of Topbar -->
 
-            
-        <!-- Page Heading -->
-            <div class="swiper-container-solution">
-                <div class="selected-solution">
-                    <div>
-                        <div class="swiper-container">
-                            <div class="layer-title">Dashboard</div>
-                            <div class="solution-cardlist swiper-wrapper">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <h1 class="h3 mb-1 text-gray-800">Bookmarks</h1>
+                <p class="mb-4">All your bookmark collections are here.</p>
+                <!-- End of Page Heading -->
 
-                                {{#each posts}}
+                
+                <!-- Content Row -->
+                <div class="row">
+                    <!-- Note: the bookmark cards starts populating here -->
+                    {{#each posts}}
+                    <div class="col-lg-12">
+                        <div class="card mb-4 py-3 border-left-primary">
+                            <div class="card-body">
+                                <h5>{{this.genre}}</h5>
+                                <h5>{{this.description}}</h5>
+                                <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go To URL</a>
+                                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
+                                    Edit
+                                </button>
 
-                                <div class="col-sm-4 swiper-slide" style="width: 18rem;">
-                                    <img class="card-img-top"
-                                        src="https://images-na.ssl-images-amazon.com/images/I/31x%2Bq3aNVKL._SX425_.jpg"
-                                        alt="Card image cap">
-                                    <div class="card-body">
-
-                                        <h5 class="card-title">{{this.genre}}</h5>
-                                        <hr class="sidebar-divider d-none d-md-block">
-                                        <p class="card-text">{{this.description}}</p>
-                                        <a class="btn btn-primary" href={{this.url}} role="button">Go To URL</a>
-                                        <button class="btn btn-link" type="button" data-toggle="modal"
-                                            data-target="#urlModal">
-                                            Edit
-                                        </button>
-
-                                        <!-- Delete Button and Modal START-->
-                                        <button id="delete-bookmark-op" type="button" class="btn btn-primary"
-                                            data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
-                                        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-sm">
-                                                <div class="modal-content">
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save
-                                                            changes</button>
-                                                    </div>
-                                                </div>
+                                <!-- Delete Button and Modal START-->
+                                <button id="delete-bookmark-op" type="button" class="btn btn-primary"
+                                    data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
+                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+                                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save
+                                                    changes</button>
                                             </div>
-                                        </div>
-                                        <!-- Delete Button and Modal END-->
-
-                                        <a href="#" class="card-link">Favorite</a>
-
-
-                                        <div class="container">
-                                            <div class="share"></div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Delete Button and Modal END-->
 
-                                {{/each}}
+                                <a href="#" class="card-link">Favorite</a>
 
+                                <div class="container">
+                                    <div class="share"></div>
+                                </div>
                             </div>
-                            <div class="swiper-pagination solution-pagination"></div>
                         </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                    </div>
+                    {{/each}}
+                </div><!-- END Content Row -->
+            </div>
+            <!-- End Page Content (/.container-fluid) -->
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2019</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Main Content -->
+            </footer><!-- End of Footer -->
+        </div><!-- End of Main Content -->
+    </div><!-- End of Content Wrapper -->
+</div><!-- End of Page Wrapper -->
 
-    <!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2019</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -306,54 +285,10 @@
 </div>
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<!-- Page level plugins: Customized Javascript code for dashboard.handlebars ONLY!!!!-->
 <script src="js/postBookmark.js"></script>
-<script src="js/jquery-1.11.0.js"></script>
-<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/jssocials.js"></script>
 <script type="text/javascript">
-    $(function () {
-        new Swiper(".swiper-container", {
-
-            width: 100 %;
-            height: 100 %;
-
-            /*默认功能属性*/
-            speed: 250,
-            slidesPerView: 3,
-            spaceBetween: 10 %,
-            slidesPerGroup: 3,
-            autoplay: false,
-
-            /*分页索引*/
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-
-            /*分页按钮*/
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            },
-
-            ".swiper-slide",{
-                background- size: contain;
-        background - repeat: no - repeat;
-        width: 100 %;
-        height: 100 %;
-    }
-
-        });
-    })
     $(document).ready(function () {
         $('.share').jsSocials({
             shareIn: "popup",
@@ -363,5 +298,4 @@
         })
     })
 </script>
-
-<!-- Page level plugins -->
+<!-- END Page level plugins -->
