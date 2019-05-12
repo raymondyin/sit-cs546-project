@@ -1,20 +1,31 @@
 const path = require("path");
 const register = require("./Register");
 const bodyParser = require('body-parser');
+const login = require("./login");
+const dashboard = require("./dashboard");
+const addBookmark = require("./addBookmark");
+
 
 const constructorMethod = app => {
 
     app.get("/", (req, res) => {
-      res.sendFile(path.resolve("static/login.html"));
+      res.redirect("/login");
     });
     app.use("/register", register);
     app.use(bodyParser.json());
-    app.get("/register.html", (req, res) => {
-        res.sendFile(path.resolve("static/register.html"));
-    });
-  
+   
+    app.use("/login", login);
+    app.use('/dashboard', dashboard);
+    app.use("/addBookmark", addBookmark);
+    
+
+
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
     app.use("*", (req, res) => {
-      res.sendFile(path.resolve("static/login.html"));
+      res.redirect('/');
     });
   };
 

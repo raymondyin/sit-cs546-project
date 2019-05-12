@@ -1,0 +1,135 @@
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                {{#if success_msg}}
+                                <div class="alert alert-success">{{success_msg}}</div>
+                                {{/if}}
+                                {{#if error_msg}}
+                                <div class="alert alert-danger">{{error_msg}}</div>
+                                {{/if}}
+                                {{#if error}}
+                                <div class="alert alert-danger">{{error}}</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user" method="POST" action="/register">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="fname"
+                                        id="exampleFirstName" placeholder="First Name" pattern="[a-zA-Z]*" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" name="lname"
+                                        id="exampleLastName" placeholder="Last Name" pattern="[a-zA-Z]*" required>
+                                </div>
+                                <div>
+                                    <p id='message_name'></p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="number" class="form-control form-control-user" name="age"
+                                        placeholder="Age" min=1 max=100 required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" name="gender"
+                                        placeholder="Gender" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select id="locality-dropdown" class="form-control" name="country">
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" name="state"
+                                        placeholder="State" required>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" name="city"
+                                        placeholder="City" required>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" name="email"
+                                    id="exampleInputEmail" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control form-control-user" name="phoneNumber"
+                                    id="exampleInputPhoneNumber" placeholder="Phone Number" pattern="[0-9]+" required>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user" name="pw1"
+                                        id="exampleInputPassword" placeholder="Password" minlength=6 required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user" name="pw2"
+                                        id="exampleRepeatPassword" placeholder="Repeat Password" minlength=6 required>
+
+                                </div>
+                                <div>
+                                    <p id='message'></p>
+                                </div>
+
+                            </div>
+
+
+
+                            <button type="submit" value="Register" class="btn btn-primary btn-user btn-block"
+                                id="submit_button">
+                                Register Account
+                            </button>
+                            <hr>
+
+                        </form>
+                        <hr>
+
+                        <div class="text-center">
+                            <a class="small" href="/">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/register.js"></script>
+
+<script>
+    $('#exampleInputPassword, #exampleRepeatPassword').on('keyup', function () {
+        if (($('#exampleInputPassword').val() === $('#exampleRepeatPassword').val()) && ($('#exampleInputPassword').val() != "" && $('#exampleRepeatPassword').val() != "")) {
+            $('#message').html('Passwords are matched!').css({ 'color': 'grey', 'font-size': '0.8 rem' });
+            $('#submit_button').removeAttr("disabled");
+        } else {
+            $('#message').html('Passwords are not matching, please double check your passwords.').css({ 'color': 'grey', 'font-size': '0.8rem' });
+            $("#submit_button").attr("disabled", true);
+        }
+    });
+
+    // $(document).ready(function(){
+    //   var b = document.getElementById("botton")
+    // })
+</script>
