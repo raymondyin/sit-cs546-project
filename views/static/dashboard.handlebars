@@ -107,7 +107,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <form id="submit-url">
+                                <form id="post-bookmark">
                                     <div class="form-group">
                                         <label for="Bookmark Category">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
@@ -215,18 +215,23 @@
                                     Edit
                                 </button>
 
-                                <!-- Delete Button and Modal START-->
-                                <button id="delete-bookmark-op" type="button" class="btn btn-primary"
+
+                                <!-- START Delete Button and Modal -->
+                                <button type="button" class="btn btn-primary"
                                     data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
                                 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
                                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Sure to Delete?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save
-                                                    changes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-danger" id="delete-bookmark-op">Delete</button>
                                             </div>
                                         </div>
                                         <!-- Delete Button and Modal END-->
@@ -239,6 +244,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- END Delete Button and Modal -->
+
 
                                 <!-- Favorite Button -->
                                 <button id="favorite-bookmark-op" type="button" class="btn btn-primary">Add To Favorite</button>
@@ -293,10 +300,22 @@
 </div>
 
 
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
 <!-- Page level plugins: Customized Javascript code for dashboard.handlebars ONLY!!!!-->
-<script src="js/postBookmark.js"></script>
-<script src="js/jssocials.js"></script>
-<script type="text/javascript">
+<script defer src="js/postBookmark.js"></script>
+<script defer src="js/deleteBookmark.js"></script>
+<script defer src="js/jssocials.js"></script>
+<script defer type="text/javascript">
     $(document).ready(function () {
         $('.share').jsSocials({
             shareIn: "popup",

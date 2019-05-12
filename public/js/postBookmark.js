@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#submit-url").on('submit', function (event) {
+    $("#post-bookmark").on('submit', function (event) {
         event.preventDefault();
         var genre = $("#bookCategory").val().toLowerCase(),
             description = $("#bookDes").val(),
