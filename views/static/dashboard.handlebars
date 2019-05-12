@@ -22,14 +22,6 @@
                 <span>Dashboard</span></a>
         </li>
 
-        {{!-- <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <span>Your List</span>
-            </a>
-
-        </li> --}}
-
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
@@ -40,7 +32,6 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
         <div class="accordion" id="accordionExample">
             <div class="card d-flex align-items-center justify-content-center">
                 <div class="card-header" id="headingOne">
@@ -61,12 +52,11 @@
                         </a>
                     </div>
                     <script>
-                        {{this}}.sort();
+                        //{{this}}.sort();
                     </script>
                     {{/each}}
 
                 </div>
-
     </ul>
 
     <!-- Content Wrapper -->
@@ -115,7 +105,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <form>
+                                <form id="submit-url">
                                     <div class="form-group">
                                         <label for="Bookmark Category">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
@@ -180,12 +170,9 @@
 
                     <!-- Nav Item - AddURL Dropdown (Visible Only XS) -->
 
-
                     <!-- Nav Item - Alerts -->
 
                     <!-- Nav Item - Messages -->
-
-
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
@@ -233,7 +220,9 @@
                             <div class="swiper-container">
                                 <div class="layer-title">Dashboard</div>
                                 <div class="solution-cardlist swiper-wrapper">
+
                                     {{#each posts}}
+
                                     <div class="col-sm-4 swiper-slide" style="width: 18rem;">
                                         <img class="card-img-top"
                                             src="https://images-na.ssl-images-amazon.com/images/I/31x%2Bq3aNVKL._SX425_.jpg"
@@ -243,14 +232,14 @@
                                             <h5 class="card-title">{{this.genre}}</h5>
                                             <hr class="sidebar-divider d-none d-md-block">
                                             <p class="card-text">{{this.description}}</p>
-                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
+                                            <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go</a>
                                             <button class="btn btn-link" type="button" data-toggle="modal"
                                                 data-target="#urlModal">
                                                 Edit
                                             </button>
                                             <a href="#" class="card-link">Delete</a>
                                             <a href="#" class="card-link">Favorite</a>
-                                            
+
 
                                             <div class="container">
                                                 <div class="share"></div>
@@ -258,8 +247,8 @@
                                         </div>
                                     </div>
 
-
                                     {{/each}}
+
                                 </div>
                                 <div class="swiper-pagination solution-pagination"></div>
                             </div>

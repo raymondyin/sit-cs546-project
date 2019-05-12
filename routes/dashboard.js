@@ -24,8 +24,8 @@ router.get('/', sessionChecker, async (req, res) => {
     //console.log(allBookmark);
     let genre = [];
     for (let i in allBookmark) {
-        if (!genre.includes(allBookmark[i].genre)) {
-            genre.push(allBookmark[i].genre);
+        if (!genre.includes(allBookmark[i]["genre"])) {
+            genre.push(allBookmark[i]["genre"]);
             genre.sort();
         }
     }
