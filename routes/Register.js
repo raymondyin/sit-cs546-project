@@ -6,7 +6,7 @@ const xss = require("xss");
 
 // var popupS = require('popups');
 router.get('/', async (req, res) => {
-    res.render('static/register');
+    res.render('static/register', {title: "Register"});
 });
 
 router.post("/", async (req, res) => {
