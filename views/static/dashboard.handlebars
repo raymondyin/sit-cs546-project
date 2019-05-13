@@ -262,7 +262,7 @@
                 <div class="row">
                     <!-- Note: the bookmark cards starts populating here -->
                     {{#each posts}}
-                    <div class="col-lg-12 cardEach" id={{this.url}} name={{this.isFavorite}}>
+                    <div class="col-lg-12 cardEach" id={{this.url}} data-name={{this.isFavorite}}>
                         <div class="card mb-4 py-3 border-left-primary">
                             <div class="card-body" style="height: 10rem">
                                 <h5>Category: {{this.genre}}</h5>
@@ -389,7 +389,7 @@
     function showFav() {
         const datas = document.getElementsByClassName('cardEach');
         for (var i = 0; i < datas.length; i++) {
-            if (datas[i].getAttribute('name') == "Yes") {
+            if (datas[i].getAttribute('data-name') == "Yes") {
                 //datas[i].setAttribute('display', 'block');
             }
             else {
