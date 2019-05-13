@@ -6,6 +6,8 @@ const dashboard = require("./dashboard");
 const addBookmark = require("./addBookmark");
 const deleteBookmark = require("./deleteBookmark");
 
+const addfavorite = require("./addfavorite");
+const editBookmark = require("./editBookmark");
 
 const constructorMethod = app => {
 
@@ -19,6 +21,10 @@ const constructorMethod = app => {
     app.use('/dashboard', dashboard);
     app.use("/addBookmark", addBookmark);
     app.use("/deleteBookmark", deleteBookmark);
+    app.use("/addfavorite", addfavorite);
+    app.use("/editBookmark", editBookmark);
+    
+
 
 app.get('/logout', (req, res) => {
   req.session.destroy();

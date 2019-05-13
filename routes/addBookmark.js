@@ -11,13 +11,16 @@ router.post("/", async (req, res) => {
     const description = xss(req.body.description);
     const url = xss(req.body.bookUrl);
     const userId = req.session.passport.user;
-    if (await addBookmark.checkBookmark(url) === false) {
-        req.flash('error_msg', 'Bookmark already exist!');
-        res.end('{"failed" : "Updated failed", "status" : 500, "redirect": "/dashboard"}');
-    } else {
+    var judge = await addBookmark.checkBookmark(url);
+    console.log(judge)
+    if (judge == false) {
+        //req.flash('error_msg', 'Bookmark already exist!');
+        res.send({"success" : "Updated failed", "status" : 500});
+    }
+    else {
             const insertBookmark = await addBookmark.addBookmark(genre, description, url, userId);
-            req.flash('success_msg', 'Bookmark added!');
-            res.end('{"success" : "Updated Successfully", "status" : 200, "redirect": "/dashboard"}');
+            //req.flash('success_msg', 'Bookmark added!');
+            res.send({"success" : "Updated Successfully", "status" : 200});
     }
 });
 
