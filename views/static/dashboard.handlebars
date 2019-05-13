@@ -85,7 +85,7 @@
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" name="searchText" class="form-control bg-light border-0 small"
-                            placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            placeholder="Search for..." aria-label="Search">
                         <div id="basic-addon2" class="input-group-append">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
@@ -189,11 +189,11 @@
                             <div class="modal-body">
                                 <form id="edit-bookmark">
                                     <div class="form-group">
+                                        <div id="editCategoryHelp"></div>
                                         <label for="bookCategory">Category</label>
                                         <input type="text" class="form-control" name="bookCategory"
-                                            id="editBookCategory" aria-describedby="categoryHelp"
+                                            id="editBookCategory" aria-describedby="editCategoryHelp"
                                             placeholder="Ex: Drama" required>
-                                        <div id="categoryHelp"></div>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
@@ -208,11 +208,11 @@
                                     <div class="dropdown-divider"></div>
                                     <!-- URL -->
                                     <div class="form-group">
+                                        <div id="editBookmarkURLHelp"></div>
                                         <label for="editBookmarkURL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="editBookmarkURL" name="bookmarkURL"
-                                            aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
+                                            aria-describedby="editBookmarkURLHelp" placeholder="https://example.com"
                                             size="30" readonly="readonly">
-                                        <div id="bookmarkURLHelp"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
@@ -243,8 +243,8 @@
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small"
-                                        placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div id="basic-addon2" class="input-group-append">
+                                        placeholder="Search for..." aria-label="Search">
+                                    <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
                                         </button>
