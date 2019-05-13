@@ -92,6 +92,19 @@ async function getCategoryById(id, genre) {
     return allCategory;
 }
 
+async function searchBookmark(searchStr, userId) {
+    const bookmark = await book();
+    var bookmarkResult = [];
+    const bookmarkResultByGenre = await bookmark.find({ userId: userId, genre: {$regex: searchStr, $options: "$i" }}).toArray();
+    const bookmarkResultByDes = await bookmark.find({ userId: userId, description: {$regex: searchStr, $options: "$i" } }).toArray();
+    const bookmarkResultByUrl = await bookmark.find({ userId: userId, url: {$regex: searchStr, $options: "$i" } }).toArray();
+    bookmarkResult = bookmarkResultByGenre.concat(bookmarkResultByDes).concat(bookmarkResultByUrl);
+
+    //console.log(bookmarkResult);
+    return bookmarkResult;
+}
+
+
 // Search for genre, url and description of any bookmark that contains the input string as a substring
 async function searchBookmark(searchStr, userId) {
     if (typeof searchStr !== String) throw "Url is not a string!";
