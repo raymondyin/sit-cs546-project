@@ -1,6 +1,7 @@
-$(document).ready(function () {
-    $("#post-bookmark").on('submit', function (event) {
-        event.preventDefault();
+//$(document).ready(function () {
+    $("#post-bookmark").submit(function (event) {
+        //event.preventDefault();
+        //alert('cnm');
         var genre = $("#bookCategory").val().toLowerCase(),
             description = $("#bookDes").val(),
             bookUrl = $("#bookmarkURL").val();
@@ -14,14 +15,20 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (result) {
-                console.log(result);
-                window.location.href = result.redirect;
+                if(result["success"] == "Updated Successfully") {
+                    alert('Upload successfully!');
+                    window.location.href = '/'
+                }
+                else
+                if(result["success"] == "Updated failed") {
+                    alert('Bookmark exists!');
+                }
             },
             error: function (result) {
                 console.log(result);
                 alert("error");
             }
         });
-        return false;
+        //return false;
     });
-});
+//});

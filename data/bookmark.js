@@ -1,5 +1,6 @@
 const mongoCollections = require("./collections.js");
 const book = mongoCollections.Bookmark_category;
+const ObjectID = require('mongodb').ObjectID
 
 async function addBookmark(genre, description, url, id) {
     const bookmark = await book();
@@ -7,7 +8,8 @@ async function addBookmark(genre, description, url, id) {
         genre: genre,
         description: description,
         url: url,
-        userId: id
+        userId: id,
+        isFavorite: "No"
     }
     const insertInfo = await bookmark.insertOne(bookmarkInfo);
     if (insertInfo.insertedCount === 0) throw "Created failed";
@@ -37,6 +39,34 @@ async function findAllbyGenreId(id, genre) {
     return allBookmark;
 }
 
+async function edit(genre, description, url){
+    const bookmark = await book();
+    const data = await bookmark.findOne({url: url});
+    const id = data["_id"]
+    const allBookmark = await bookmark.updateMany({_id: id}, {$set:{genre: genre, description: description, url: url}});
+    return "good"; 
+}
+
+async function isFavorite(userId, url) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.updateMany({userId: userId, url: url}, {$set:{"isFavorite": "Yes"}}).toArray();
+    console.log(allBookmark);
+    return "good";
+}
+
+async function notFavorite(userId, url) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.updateMany({userId: userId, url: url}, {$set:{"isFavorite": "No"}}).toArray();
+    console.log(allBookmark);
+    return "good";
+}
+
+async function findByURL(id, url) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.find({userId: id,url: url}).toArray();
+    return allBookmark;
+}
+ 
 async function addCategory(genre) {
     const bookmark = await book();
     const categoryInfo = {
@@ -63,99 +93,68 @@ async function getCategoryById(id, genre) {
     return allCategory;
 }
 
-async function getBookmarkByDescription(description) {
-    const bookmark = await book();
-    const allBookmark = bookmark.find({ description: description }).toArray();
-    return allBookmark;
-}
-
-async function getBookmarkByUrl(url) {
-    const bookmark = await book();
-    const allBookmark = bookmark.find({ url: url }).toArray();
-    return allBookmark;
-}
-
 async function searchBookmark(searchStr, userId) {
     const bookmark = await book();
     var bookmarkResult = [];
     const bookmarkResultByGenre = await bookmark.find({ userId: userId, genre: {$regex: searchStr, $options: "$i" }}).toArray();
     const bookmarkResultByDes = await bookmark.find({ userId: userId, description: {$regex: searchStr, $options: "$i" } }).toArray();
     const bookmarkResultByUrl = await bookmark.find({ userId: userId, url: {$regex: searchStr, $options: "$i" } }).toArray();
-    bookmarkResult = bookmarkResultByGenre.concat(bookmarkResultByDes).concat(bookmarkResultByUrl);
 
-    //console.log(bookmarkResult);
+    const map = {};
+    bookmarkResult = bookmarkResultByGenre.concat(bookmarkResultByDes).concat(bookmarkResultByUrl);
+    var i = 0;
+    while(i < bookmarkResult.length) {
+        if(map[bookmarkResult[i]["url"]] == undefined) {
+            map[bookmarkResult[i]["url"]] = 1;
+        }
+        else {
+            bookmarkResult.splice(i, 1);
+            i --;
+        }
+        i++;
+    }
+
     return bookmarkResult;
 }
 
 
-async function main() {
+// Search for genre, url and description of any bookmark that contains the input string as a substring
+/*async function searchBookmark(searchStr, userId) {
+    if (typeof searchStr !== String) throw "Url is not a string!";
+    if (!searchStr || searchStr.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
+    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
+
+
+    return searchResultByBookmarkId;
+}*/
+
+
+async function deleteBookmarkByID(id){
+    if (!id) throw "You must provide an id to search for";
     
-    const data = await searchBookmark('goo', '5cd8f26a1fbe4374fcd69d96');
-    console.log(data);
-}
-main();
+    const bookmarkCollection = await book();
+    const bookmarkToBeDelated = await bookmarkCollection.findOne({userId: id});
 
+    const deletionInfo = await bookmarkCollection.removeOne({ _id: ObjectID(id) });
 
-/*
-async function searchBookmarkByTag(tag, userId) {
-    if (typeof tag !== String) throw "Tag is not a string!";
-    if (!tag || tag.length === 0) throw "Missing tag for bookmarkSearchByTag()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let tagSearchResult = [];
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let currUserId = bookmarkCollections[i].userId;
-        let currGenre = bookmarkCollections[i].genre;
-        if (userId === currUserId.str && currGenre.includes(tag)) {
-            tagSearchResult.push(currGenre);
-        }
+    if (deletionInfo.deletedCount === 0) {
+        throw `Could not delete bookmark with id of ${id}`;
     }
-    return tagSearchResult;
+    return bookmarkToBeDelated;
 }
-
-async function searchBookmarkByUrl(url, userId) {
-    if (typeof url !== String) throw "Url is not a string!";
-    if (!url || url.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let urlSearchResult = [];
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let currUserId = bookmarkCollections[i].userId;
-        let currUrl = bookmarkCollections[i].url;
-        if (userId === currUserId.str && currUrl.includes(url)) {
-            tagSearchResult.push(currUrl);
-        }
-    }
-    return urlSearchResult;
-}
-
-async function searchBookmarkByDescription(description, userId) {
-    if (typeof description !== String) throw "Description is not a string!";
-    if (!description || description.length === 0) throw "Missing description for bookmarkSearchByDescription()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let descriptionSearchResult = [];
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let currUserId = bookmarkCollections[i].userId;
-        let currDescription = bookmarkCollections[i].description;
-        if (userId === currUserId.str && currDescription.includes(description)) {
-            descriptionSearchResult.push(currDescription);
-        }
-    }
-    return descriptionSearchResult;
-}
-*/
 
 module.exports = {
     addBookmark,
+    deleteBookmarkByID,
     checkBookmark,
     getBookmarkById,
     addCategory,
     getCategoryById,
     checkCategory,
     searchBookmark,
-    findAllbyGenreId
+    findAllbyGenreId,
+    isFavorite,
+    notFavorite,
+    findByURL,
+    edit
 }

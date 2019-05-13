@@ -5,15 +5,16 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">Bookmark Collector</div>
-        </a>
-
+        <li>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Bookmark Collector </div>
+            </a>
+        </li>
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
@@ -25,7 +26,7 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="#" onclick="showFav();">
 
                 <span>Favorite</span>
             </a>
@@ -33,8 +34,9 @@
 
 
         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-        <div class="accordion" id="accordionExample">
+
+
+        <li class="accordion" id="accordionExample">
             <div class="card d-flex align-items-center justify-content-center">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
@@ -59,6 +61,8 @@
                     {{/each}}
 
                 </div>
+            </div>
+        </li>
     </ul>
     <!-- End of Sidebar -->
 
@@ -72,15 +76,16 @@
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                {{!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
-                </button>
+                </button> --}}
 
                 <!-- Topbar Search -->
-                <form action="/dashboard/search" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <form id="searchForm" method="POST" action="/dashboard"
+                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" name="searchtext" id="search-text" placeholder="Search for..."
-                            aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" name="searchText" class="form-control bg-light border-0 small"
+                            placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
@@ -96,13 +101,13 @@
                         Add Bookmark
                     </button>
                 </div>
-                <!-- Add url form -->
+                <!-- Add url modal form -->
                 <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add new Bookmark</h5>
+                                <h5 class="modal-title" id="urlModalLabel">Add new Bookmark</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -111,7 +116,7 @@
                             <div class="modal-body">
                                 <form id="post-bookmark">
                                     <div class="form-group">
-                                        <label for="Bookmark Category">Category</label>
+                                        <label for="Bookmark_Category">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
                                     </div>
@@ -119,8 +124,8 @@
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
-                                        <label for="Book Description">Note</label>
-                                        <textarea id="bookDes" name="bookDes" class="form-control" for="book-content"
+                                        <label for="Book_Description">Note</label>
+                                        <textarea id="bookDes" name="bookDes" class="form-control"
                                             rows="3" placeholder="Enter Notes..." required></textarea>
                                     </div>
 
@@ -133,10 +138,82 @@
                                             size="30" required>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="closeForm"
+                                        <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" value="save"
                                             id="saveBookmark">Save</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- START Delete Modal -->
+                <div id="deleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm Deletion</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sure to Delete Bookmark with ID: <div id="bookmarkID"></div>?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger" id="delete-bookmark-confirm-button">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Delete Modal -->
+
+                <!-- edit url form -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Bookmark</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="edit-bookmark">
+                                    <div class="form-group">
+                                        <label for="Bookmark_Category">Category</label>
+                                        <input type="text" class="form-control" name="bookCategory"
+                                            id="editBookCategory" aria-describedby="categoryHelp"
+                                            placeholder="Ex: Drama" required>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group">
+                                        <label for="Book_Description">Note</label>
+                                        <textarea id="editBookDes" name="bookDes" class="form-control"
+                                            rows="3" placeholder="Enter Notes..."
+                                            required></textarea>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+                                    <!-- URL -->
+                                    <div class="form-group">
+                                        <label for="URL">Bookmark Url</label>
+                                        <input type="url" class="form-control" id="editBookmarkURL" name="bookmarkURL"
+                                            aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
+                                            size="30" readonly="readonly">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" id="closeForm"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            id="editSubmitBookmark">Save</button>
                                     </div>
 
                                 </form>
@@ -177,7 +254,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
-                            <img class="img-profile rounded-circle"
+                            <img class="img-profile rounded-circle" alt="Ironman_Profile"
                                 src="http://p0.qhimg.com/dr/1080__/t01e8e3c1daa93bfc6c.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
@@ -202,53 +279,38 @@
                 <p class="mb-4">All your bookmark collections are here.</p>
                 <!-- End of Page Heading -->
 
-                
+
                 <!-- Content Row -->
                 <div class="row">
                     <!-- Note: the bookmark cards starts populating here -->
                     {{#each posts}}
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 cardEach" id={{this.url}} name={{this.isFavorite}}>
                         <div class="card mb-4 py-3 border-left-primary">
-                            <div class="card-body">
-                                <h5>{{this.genre}}</h5>
-                                <h5>{{this.description}}</h5>
+                            <div class="card-body" style="height: 10rem">
+                                <h5>Category: {{this.genre}}</h5>
+                                <h5>Notes: {{this.description}}</h5>
                                 <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go To URL</a>
-                                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
+                                <button class="btn btn-primary" type="button"
+                                    onclick="modalshow('{{this.genre}}','{{this.description}}','{{this.url}}');">
                                     Edit
                                 </button>
 
 
-                                <!-- START Delete Button and Modal -->
-                                <button type="button" class="btn btn-primary"
-                                    data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
-                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sure to Delete?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger" id="delete-bookmark-op">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END Delete Button and Modal -->
+                                <!-- START Delete Button -->
+                                <button class="btn btn-primary" type="button" data-target=".bd-example-modal-sm" onclick="showDeleteModal('{{this._id}}');">Delete</button>
+                                <!-- END Delete Button -->
 
 
-                                <a href="#" class="card-link">Favorite</a>
-
+                                <!-- Favorite Button -->
+                                <button type="button" class="favoriteBtn {{this.isFavorite}}"
+                                    onclick="addfavorite('{{this.url}}');">Add To Favorite</button>
+                                <!-- Share Button -->
                                 <div class="container">
                                     <div class="share"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><!-- END class="col-lg-12" -->
                     {{/each}}
                 </div><!-- END Content Row -->
             </div>
@@ -273,12 +335,12 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel1">Ready to Leave?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -306,10 +368,46 @@
 
 <!-- Page level plugins: Customized Javascript code for dashboard.handlebars ONLY!!!!-->
 <script defer src="js/postBookmark.js"></script>
+<script defer src="js/editBookmark.js"></script>
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
+<script defer src="js/addFavorite.js"></script>
 <script defer type="text/javascript">
+    function modalshow(genre, des, url) {
+        $('#bookCategory').val(genre);
+        $('#bookDes').text(des);
+        $('#bookmarkURL').val(url);
+        $('#urlModalLabel').text('Edit Bookmark');
+        $('#urlModal').modal('show');
+    }
+    function showDeleteModal(id){
+        $('#bookmarkID').text(id);
+        $('#deleteModal').modal('show');
+    }
+
+    function addfavorite(u) {
+        //console.log("1");
+        var fun = addFavorite;
+        fun(u);
+    }
+
+    function showFav() {
+        const datas = document.getElementsByClassName('cardEach');
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].getAttribute('name') == "Yes") {
+                //datas[i].setAttribute('display', 'block');
+            }
+            else {
+                datas[i].setAttribute('hidden', true);
+            }
+        }
+
+    }
     $(document).ready(function () {
+        $('.favoriteBtn.No').addClass("btn btn-primary");
+        $('.favoriteBtn.No').text('Add to Favorite');
+        $('.favoriteBtn.Yes').addClass("btn btn-secondary");
+        $('.favoriteBtn.Yes').text('Remove from Favorite');
         $('.share').jsSocials({
             shareIn: "popup",
             showCount: false,
@@ -318,4 +416,5 @@
         })
     })
 </script>
+
 <!-- END Page level plugins -->

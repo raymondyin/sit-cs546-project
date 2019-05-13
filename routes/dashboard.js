@@ -33,7 +33,7 @@ router.get('/', sessionChecker, async (req, res) => {
     if (xss(req.query.catalog)) {
         const getGenre = xss(req.query.catalog);
         const userBookmark = await bookmark.findAllbyGenreId(userID, getGenre);
-        console.log(userBookmark);
+        //console.log(userBookmark);
         res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: userBookmark, cata: genre});
     } else {
         res.render('static/dashboard', {title: "User Dashboard", userName: userFN, posts: allBookmark, cata: genre});
@@ -41,12 +41,12 @@ router.get('/', sessionChecker, async (req, res) => {
     // }
 });
 
-router.post('/search', sessionChecker, async (req, res) => {
+router.post('/', sessionChecker, async (req, res) => {
     const userOBJ = req.session.passport;
     const userID = userOBJ.user;
     const userPersonalInfo = await userInfo.getUserById(userID);
     const userFN = userPersonalInfo.profile.firstName;
-    const searchStr = req.body.searchtext;
+    const searchStr = req.body.searchText;
     const allBookmark = await bookmark.getBookmarkById(req.session.passport.user);
     //console.log(allBookmark);
     let genre = [];
@@ -56,8 +56,8 @@ router.post('/search', sessionChecker, async (req, res) => {
             genre.sort();
         }
     }
-    const bookmarkSearchResult = await bookmarkFunc.searchBookmark(searchStr, userID);
-    console.log(bookmarkSearchResult);
+    const bookmarkSearchResult = await bookmark.searchBookmark(searchStr, userID);
+    //console.log(bookmarkSearchResult);
 
     res.render('static/dashboard', {title: "Search Results", userName: userFN, posts: bookmarkSearchResult, cata: genre});
 })
