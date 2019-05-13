@@ -20,14 +20,16 @@
         <li class="nav-item active">
             <a class="nav-link" href="/dashboard" onclick="gotoType(1)">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span>Dashboard</span>
+            </a>
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="showFav();">
 
-                <span>Favorite</span></a>
+                <span>Favorite</span>
+            </a>
         </li>
 
 
@@ -83,8 +85,8 @@
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" name="searchText" class="form-control bg-light border-0 small"
-                            placeholder="Search for..." aria-label="Search" aria-describedby="searchForm">
-                        <div class="input-group-append">
+                            placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div id="basic-addon2" class="input-group-append">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
@@ -117,6 +119,7 @@
                                         <label for="bookCategory">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
+                                        <div id="categoryHelp"></div>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
@@ -134,6 +137,7 @@
                                         <input type="url" class="form-control" id="bookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURL" placeholder="https://example.com"
                                             size="30" required>
+                                        <div id="bookmarkURLHelp"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -152,6 +156,7 @@
                 <!-- START Delete Modal -->
                 <div id="deleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div id="mySmallModalLabel"></div>
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -184,10 +189,11 @@
                             <div class="modal-body">
                                 <form id="edit-bookmark">
                                     <div class="form-group">
-                                        <label for="editBookCategory">Category</label>
-                                        <input type="text" class="form-control" name="editBookCategory"
+                                        <label for="bookCategory">Category</label>
+                                        <input type="text" class="form-control" name="bookCategory"
                                             id="editBookCategory" aria-describedby="categoryHelp"
                                             placeholder="Ex: Drama" required>
+                                        <div id="categoryHelp"></div>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
@@ -206,6 +212,7 @@
                                         <input type="url" class="form-control" id="editBookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
                                             size="30" readonly="readonly">
+                                        <div id="bookmarkURLHelp"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
@@ -237,7 +244,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small"
                                         placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
+                                    <div id="basic-addon2" class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
                                         </button>

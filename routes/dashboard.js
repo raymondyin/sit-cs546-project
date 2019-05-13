@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");;
 const passport = require("passport");
+const bookmarkFunc = require("../data/bookmark");
 
 const userInfo = data.userData;
 const bookmark = data.bookmark;
@@ -60,6 +61,5 @@ router.post('/', sessionChecker, async (req, res) => {
 
     res.render('static/dashboard', {title: "Search Results", userName: userFN, posts: bookmarkSearchResult, cata: genre});
 })
-
 
 module.exports = router;

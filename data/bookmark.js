@@ -35,7 +35,7 @@ async function getBookmarkById(id) {
 
 async function findAllbyGenreId(id, genre) {
     const bookmark = await book();
-    const allBookmark = await bookmark.find({userId: id, genre: genre}).toArray();
+    const allBookmark = await bookmark.find({ userId: id, genre: genre }).toArray();
     return allBookmark;
 }
 
@@ -81,7 +81,7 @@ async function checkCategory(genre) {
     const category = await book();
     const existCategory = await category.findOne({ genre });
     if (existCategory === null) {
-        return true; 
+        return true;
     } else {
         return false;
     }
@@ -124,26 +124,6 @@ async function searchBookmark(searchStr, userId) {
     if (!searchStr || searchStr.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
     if (userId) throw "Missing userID for bookmarkSearchByTag()!";
 
-    const bookmarkCollections = await book();
-    let searchResultByBookmarkId = new Set();
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let bookmarkIdStr = bookmarkCollections._id.str;
-        let userId = bookmarkCollections[i].userId;
-        let tag = bookmarkCollections[i].genre;
-        let url = bookmarkCollections[i].url;
-        let description = bookmarkCollections[i].description;
-        if (userId === currUserId.str) {
-            if (tag.includes(searchStr)) {
-                searchResultByBookmarkId.add(bookmarkIdStr);
-            }
-            if (url.includes(searchStr)) {
-                searchResultByBookmarkId.add(bookmarkIdStr);
-            }
-            if (description.includes(searchStr)) {
-                searchResultByBookmarkId.add(bookmarkIdStr);
-            }
-        }
-    }
 
     return searchResultByBookmarkId;
 }*/
