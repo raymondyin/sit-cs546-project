@@ -86,7 +86,7 @@
                     <div class="input-group">
                         <input type="text" name="searchText" class="form-control bg-light border-0 small"
                             placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
+                        <div id="basic-addon2" class="input-group-append">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
@@ -116,15 +116,16 @@
                             <div class="modal-body">
                                 <form id="post-bookmark">
                                     <div class="form-group">
-                                        <label for="Bookmark_Category">Category</label>
+                                        <label for="bookCategory">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
+                                        <div id="categoryHelp"></div>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
-                                        <label for="Book_Description">Note</label>
+                                        <label for="bookDes">Note</label>
                                         <textarea id="bookDes" name="bookDes" class="form-control"
                                             rows="3" placeholder="Enter Notes..." required></textarea>
                                     </div>
@@ -132,10 +133,11 @@
                                     <div class="dropdown-divider"></div>
                                     <!-- URL -->
                                     <div class="form-group">
-                                        <label for="URL">Bookmark Url</label>
+                                        <label for="bookmarkURL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="bookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
                                             size="30" required>
+                                        <div id="bookmarkURLHelp"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -154,6 +156,7 @@
                 <!-- START Delete Modal -->
                 <div id="deleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div id="mySmallModalLabel"></div>
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -186,16 +189,17 @@
                             <div class="modal-body">
                                 <form id="edit-bookmark">
                                     <div class="form-group">
-                                        <label for="Bookmark_Category">Category</label>
+                                        <label for="bookCategory">Category</label>
                                         <input type="text" class="form-control" name="bookCategory"
                                             id="editBookCategory" aria-describedby="categoryHelp"
                                             placeholder="Ex: Drama" required>
+                                        <div id="categoryHelp"></div>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
-                                        <label for="Book_Description">Note</label>
+                                        <label for="editBookDes">Note</label>
                                         <textarea id="editBookDes" name="bookDes" class="form-control"
                                             rows="3" placeholder="Enter Notes..."
                                             required></textarea>
@@ -204,10 +208,11 @@
                                     <div class="dropdown-divider"></div>
                                     <!-- URL -->
                                     <div class="form-group">
-                                        <label for="URL">Bookmark Url</label>
+                                        <label for="editBookmarkURL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="editBookmarkURL" name="bookmarkURL"
                                             aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
                                             size="30" readonly="readonly">
+                                        <div id="bookmarkURLHelp"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
@@ -239,7 +244,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small"
                                         placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
+                                    <div id="basic-addon2" class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
                                         </button>
