@@ -201,6 +201,31 @@
                     </div>
                 </div>
 
+                <!-- delete modal -->
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true" id="deleteModal">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Sure to Delete?</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-footer">
+                                <form id="delete-bookmark-op">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        >Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Delete Button and Modal END-->
+                    </div>
+                </div>
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -275,29 +300,7 @@
 
 
                                 <!-- START Delete Button and Modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target=".bd-example-modal-sm">Delete</button>
-                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Sure to Delete?</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger"
-                                                    id="delete-bookmark-op">Delete</button>
-                                            </div>
-                                        </div>
-                                        <!-- Delete Button and Modal END-->
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-primary" onclick="delBookmark('{{this._id}}');">Delete</button>
                                 <!-- END Delete Button and Modal -->
 
 
@@ -371,6 +374,7 @@
 <script defer src="js/editBookmark.js"></script>
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
+<script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/addFavorite.js"></script>
 <script defer type="text/javascript">
     function modalshow(genre, des, url) {
@@ -398,6 +402,18 @@
         }
 
     }
+
+    function delBookmark(id) {
+        $('#deleteModal').attr('data-name', id);
+        $('#deleteModal').modal('show');
+    }
+
+    $("#delete-bookmark-op").submit(function(event) {
+        const id = $('#deleteModal').attr('data-name');
+        var fun = deleteBookmark;
+        fun(id);
+    })
+
     $(document).ready(function () {
         $('.favoriteBtn.No').addClass("btn btn-primary");
         $('.favoriteBtn.No').text('Add to Favorite');

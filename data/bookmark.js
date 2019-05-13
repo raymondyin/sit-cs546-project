@@ -1,5 +1,6 @@
 const mongoCollections = require("./collections.js");
 const book = mongoCollections.Bookmark_category;
+const ObjectID = require('mongodb').ObjectId;
 
 async function addBookmark(genre, description, url, id) {
     const bookmark = await book();
@@ -92,6 +93,13 @@ async function getCategoryById(id, genre) {
     return allCategory;
 }
 
+async function deleteById(id) {
+    const ID = new ObjectID(id);
+    const category = await book();
+    const deleteBookmark = await category.deleteOne({_id: ID});
+    return "good";
+}
+
 async function searchBookmark(searchStr, userId) {
     const bookmark = await book();
     var bookmarkResult = [];
@@ -160,5 +168,6 @@ module.exports = {
     isFavorite,
     notFavorite,
     findByURL,
-    edit
+    edit,
+    deleteById
 }
