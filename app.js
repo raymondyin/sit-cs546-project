@@ -32,7 +32,7 @@ var log = async (req, res, next) => {
   console.log("[" +currentTime + "]: " + method + " " + route + " " + something);
   next();
 };
-app.use(log);
+//app.use(log);
 app.use(flash());
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');

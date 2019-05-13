@@ -15,7 +15,6 @@ $(document).ready(function () {
             dataType: "json",
             success: function (result) {
                 console.log(result);
-                window.location.href = result.redirect;
             },
             error: function (result) {
                 console.log(result);

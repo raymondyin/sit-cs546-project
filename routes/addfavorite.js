@@ -4,14 +4,27 @@ const data = require("../data");
 const xss = require("xss");
 const passport = require("passport");
 
-const addfavorite = data.userData;
+const addfavorite = data.bookmark;
 
 router.post('/', async (req, res) => {
-    const genre = xss(req.body.genre);
-    const description = xss(req.body.description);
-    const url = xss(req.body.url);
-    console.log(genre);
-    res.end('{"success" : "Updated Successfully", "status" : 200, "redirect": "/dashboard"}');
+    try {
+        const url = xss(req.body.url);
+        const userId = xss(req.session.passport.user);
+        console.log(url);
+        console.log(userId);
+        const data = await addfavorite.findByURL(userId, url);
+        console.log(data);
+        var fav;
+        if(data[0]["isFavorite"] == "Yes")
+            fav = await addfavorite.notFavorite(userId, url);
+        else
+            fav = await addfavorite.isFavorite(userId, url);
+        console.log(data);
+        res.send({"success" : "Updated Successfully", "status" : 200});
+    }
+    catch(e) {
+        res.send({"err": "error"});
+    }
 });
 
 module.exports = router;

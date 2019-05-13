@@ -7,7 +7,8 @@ async function addBookmark(genre, description, url, id) {
         genre: genre,
         description: description,
         url: url,
-        userId: id
+        userId: id,
+        isFavorite: "No"
     }
     const insertInfo = await bookmark.insertOne(bookmarkInfo);
     if (insertInfo.insertedCount === 0) throw "Created failed";
@@ -34,6 +35,26 @@ async function getBookmarkById(id) {
 async function findAllbyGenreId(id, genre) {
     const bookmark = await book();
     const allBookmark = await bookmark.find({userId: id, genre: genre}).toArray();
+    return allBookmark;
+}
+
+async function isFavorite(userId, url) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.updateMany({userId: userId, url: url}, {$set:{"isFavorite": "Yes"}}).toArray();
+    console.log(allBookmark);
+    return "good";
+}
+
+async function notFavorite(userId, url) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.updateMany({userId: userId, url: url}, {$set:{"isFavorite": "No"}}).toArray();
+    console.log(allBookmark);
+    return "good";
+}
+
+async function findByURL(id, url) {
+    const bookmark = await book();
+    const allBookmark = await bookmark.find({userId: id,url: url}).toArray();
     return allBookmark;
 }
  
@@ -154,5 +175,8 @@ module.exports = {
     getCategoryById,
     checkCategory,
     searchBookmark,
-    findAllbyGenreId
+    findAllbyGenreId,
+    isFavorite,
+    notFavorite,
+    findByURL
 }
