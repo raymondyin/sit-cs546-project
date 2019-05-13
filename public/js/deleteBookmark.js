@@ -1,10 +1,9 @@
 $(document).ready(function () {
-    $("#delete-bookmark-op").click(function (event) {
-        alert("called delete script");
+    $("#delete-bookmark-confirm-button").click(function (event) {
         event.preventDefault();
         var genre = $("#bookCategory").val().toLowerCase(),
             description = $("#bookDes").val(),
-            id = $("#bookmarkURL").val();
+            id = $("#bookmarkID").text();
         $.ajax({
             type: "DELETE",
             url: "/deleteBookmark",
@@ -18,7 +17,7 @@ $(document).ready(function () {
             },
             error: function (result) {
                 console.log(result);
-                alert("error");
+                alert("error" + JSON.stringify( result));
             }
         });
         return false;

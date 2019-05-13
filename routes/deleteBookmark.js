@@ -7,17 +7,17 @@ const passport = require("passport");
 const bookmark = data.bookmark;
 
 router.delete("/", async (req, res) => {
-    const url = xss(req.body.bookUrl);
-    const id = xss(req.body._id);
+    const id = xss(req.body.id);
     const userId = req.session.passport.user;
-    if (await bookmark.checkBookmark(url) === false) { // Bookmark exists
+
+    try{
         const insertBookmark = await bookmark.deleteBookmarkByID(id);
-        req.flash('success_msg', 'Bookmark deleted!');
-        res.end('{"success" : "Deleted Successfully", "status" : 200, "redirect": "/dashboard"}');
-    } else {
-        req.flash('error_msg', 'Bookmark doesn\'t exist!');
-        res.end('{"failed" : "Deletion failed", "status" : 500, "redirect": "/dashboard"}');
+    } catch(e){
+        req.flash('error_msg', 'Bookmark doesn\'t exist!' + e);
+        res.end('{"failed" : "Deletion failed", "status" : 500, "redirect": "/dashboard", "error": '+ e.toString()+ '}');
     }
+    req.flash('success_msg', 'Bookmark deleted!');
+    res.end('{"success" : "Deleted Successfully", "status" : 200, "redirect": "/dashboard"}');
 });
 
 

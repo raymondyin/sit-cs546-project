@@ -1,5 +1,6 @@
 const mongoCollections = require("./collections.js");
 const book = mongoCollections.Bookmark_category;
+const ObjectID = require('mongodb').ObjectID
 
 async function addBookmark(genre, description, url, id) {
     const bookmark = await book();
@@ -146,13 +147,13 @@ async function searchBookmarkByDescription(description, userId) {
 }
 */
 
-async deleteBookmarkByID(id){
+async function deleteBookmarkByID(id){
     if (!id) throw "You must provide an id to search for";
     
     const bookmarkCollection = await book();
     const bookmarkToBeDelated = await bookmarkCollection.findOne({userId: id});
 
-    const deletionInfo = await animalsCollection.removeOne({ _id: ObjectID(id) });
+    const deletionInfo = await bookmarkCollection.removeOne({ _id: ObjectID(id) });
 
     if (deletionInfo.deletedCount === 0) {
         throw `Could not delete bookmark with id of ${id}`;

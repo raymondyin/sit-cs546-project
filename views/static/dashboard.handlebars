@@ -94,7 +94,7 @@
                         Add Bookmark
                     </button>
                 </div>
-                <!-- Add url form -->
+                <!-- Add url modal form -->
                 <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -143,6 +143,27 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- START Delete Modal -->
+                <div id="deleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm Deletion</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sure to Delete Bookmark with ID: <div id="bookmarkID"></div>?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger" id="delete-bookmark-confirm-button">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Delete Modal -->
+
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -217,27 +238,9 @@
                                 </button>
 
 
-                                <!-- START Delete Button and Modal -->
-                                <button type="button" class="btn btn-primary"
-                                    data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
-                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sure to Delete?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger" id="delete-bookmark-op">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END Delete Button and Modal -->
+                                <!-- START Delete Button -->
+                                <button class="btn btn-primary" type="button" data-target=".bd-example-modal-sm" onclick="showDeleteModal('{{this._id}}');">Delete</button>
+                                <!-- END Delete Button -->
 
 
                                 <a href="#" class="card-link">Favorite</a>
@@ -314,6 +317,10 @@
         $('#bookmarkURL').val(url);
         $('#urlModalLabel').text('Edit Bookmark');
         $('#urlModal').modal('show');
+    }
+    function showDeleteModal(id){
+        $('#bookmarkID').text(id);
+        $('#deleteModal').modal('show');
     }
     $(document).ready(function () {
         $('.share').jsSocials({
