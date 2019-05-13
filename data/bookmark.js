@@ -98,15 +98,27 @@ async function searchBookmark(searchStr, userId) {
     const bookmarkResultByGenre = await bookmark.find({ userId: userId, genre: {$regex: searchStr, $options: "$i" }}).toArray();
     const bookmarkResultByDes = await bookmark.find({ userId: userId, description: {$regex: searchStr, $options: "$i" } }).toArray();
     const bookmarkResultByUrl = await bookmark.find({ userId: userId, url: {$regex: searchStr, $options: "$i" } }).toArray();
-    bookmarkResult = bookmarkResultByGenre.concat(bookmarkResultByDes).concat(bookmarkResultByUrl);
 
-    //console.log(bookmarkResult);
+    const map = {};
+    bookmarkResult = bookmarkResultByGenre.concat(bookmarkResultByDes).concat(bookmarkResultByUrl);
+    var i = 0;
+    while(i < bookmarkResult.length) {
+        if(map[bookmarkResult[i]["url"]] == undefined) {
+            map[bookmarkResult[i]["url"]] = 1;
+        }
+        else {
+            bookmarkResult.splice(i, 1);
+            i --;
+        }
+        i++;
+    }
+
     return bookmarkResult;
 }
 
 
 // Search for genre, url and description of any bookmark that contains the input string as a substring
-async function searchBookmark(searchStr, userId) {
+/*async function searchBookmark(searchStr, userId) {
     if (typeof searchStr !== String) throw "Url is not a string!";
     if (!searchStr || searchStr.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
     if (userId) throw "Missing userID for bookmarkSearchByTag()!";
@@ -133,7 +145,7 @@ async function searchBookmark(searchStr, userId) {
     }
 
     return searchResultByBookmarkId;
-}
+}*/
 
 
 module.exports = {
