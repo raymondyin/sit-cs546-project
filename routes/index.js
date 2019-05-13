@@ -5,6 +5,7 @@ const login = require("./login");
 const dashboard = require("./dashboard");
 const addBookmark = require("./addBookmark");
 const addfavorite = require("./addfavorite");
+const editBookmark = require("./editBookmark");
 
 const constructorMethod = app => {
 
@@ -18,6 +19,7 @@ const constructorMethod = app => {
     app.use('/dashboard', dashboard);
     app.use("/addBookmark", addBookmark);
     app.use("/addfavorite", addfavorite);
+    app.use("/editBookmark", editBookmark);
     
 
 

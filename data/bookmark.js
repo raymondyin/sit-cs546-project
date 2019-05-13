@@ -38,6 +38,14 @@ async function findAllbyGenreId(id, genre) {
     return allBookmark;
 }
 
+async function edit(genre, description, url){
+    const bookmark = await book();
+    const data = await bookmark.findOne({url: url});
+    const id = data["_id"]
+    const allBookmark = await bookmark.updateMany({_id: id}, {$set:{genre: genre, description: description, url: url}});
+    return "good"; 
+}
+
 async function isFavorite(userId, url) {
     const bookmark = await book();
     const allBookmark = await bookmark.updateMany({userId: userId, url: url}, {$set:{"isFavorite": "Yes"}}).toArray();
@@ -114,58 +122,6 @@ async function searchBookmark(searchStr, userId) {
     return searchResultByBookmarkId;
 }
 
-/*
-async function searchBookmarkByTag(tag, userId) {
-    if (typeof tag !== String) throw "Tag is not a string!";
-    if (!tag || tag.length === 0) throw "Missing tag for bookmarkSearchByTag()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let tagSearchResult = [];
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let currUserId = bookmarkCollections[i].userId;
-        let currGenre = bookmarkCollections[i].genre;
-        if (userId === currUserId.str && currGenre.includes(tag)) {
-            tagSearchResult.push(currGenre);
-        }
-    }
-    return tagSearchResult;
-}
-
-async function searchBookmarkByUrl(url, userId) {
-    if (typeof url !== String) throw "Url is not a string!";
-    if (!url || url.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let urlSearchResult = [];
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let currUserId = bookmarkCollections[i].userId;
-        let currUrl = bookmarkCollections[i].url;
-        if (userId === currUserId.str && currUrl.includes(url)) {
-            tagSearchResult.push(currUrl);
-        }
-    }
-    return urlSearchResult;
-}
-
-async function searchBookmarkByDescription(description, userId) {
-    if (typeof description !== String) throw "Description is not a string!";
-    if (!description || description.length === 0) throw "Missing description for bookmarkSearchByDescription()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-    const bookmarkCollections = await book();
-    let descriptionSearchResult = [];
-    for (i = 0; i < bookmarkCollections.length; i++) {
-        let currUserId = bookmarkCollections[i].userId;
-        let currDescription = bookmarkCollections[i].description;
-        if (userId === currUserId.str && currDescription.includes(description)) {
-            descriptionSearchResult.push(currDescription);
-        }
-    }
-    return descriptionSearchResult;
-}
-*/
 
 module.exports = {
     addBookmark,
@@ -178,5 +134,6 @@ module.exports = {
     findAllbyGenreId,
     isFavorite,
     notFavorite,
-    findByURL
+    findByURL,
+    edit
 }

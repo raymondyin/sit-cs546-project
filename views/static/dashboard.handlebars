@@ -131,10 +131,59 @@
                                             size="30" required>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="closeForm"
+                                        <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" value="save"
                                             id="saveBookmark">Save</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- edit url form -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Bookmark</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="edit-bookmark">
+                                    <div class="form-group">
+                                        <label for="Bookmark Category">Category</label>
+                                        <input type="text" class="form-control" name="bookCategory" id="editBookCategory"
+                                            aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group">
+                                        <label for="Book Description">Note</label>
+                                        <textarea id="editBookDes" name="bookDes" class="form-control" for="book-content"
+                                            rows="3" placeholder="Enter Notes..." required></textarea>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+                                    <!-- URL -->
+                                    <div class="form-group">
+                                        <label for="URL">Bookmark Url</label>
+                                        <input type="url" class="form-control" id="editBookmarkURL" name="bookmarkURL"
+                                            aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
+                                            size="30" readonly="true">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" id="closeForm"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" id="editSubmitBookmark">Save</button>
                                     </div>
 
                                 </form>
@@ -211,37 +260,42 @@
                                 <h5>Category: {{this.genre}}</h5>
                                 <h5>Notes: {{this.description}}</h5>
                                 <a class="btn btn-primary" href={{this.url}} target="_blank" role="button">Go To URL</a>
-                                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
+                                <button class="btn btn-primary" type="button"
+                                    onclick="modalshow('{{this.genre}}','{{this.description}}','{{this.url}}');">
                                     Edit
                                 </button>
 
 
                                 <!-- START Delete Button and Modal -->
-                                <button type="button" class="btn btn-primary"
-                                    data-toggle="modal" data-target=".bd-example-modal-sm">Delete</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target=".bd-example-modal-sm">Delete</button>
                                 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
                                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Sure to Delete?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger" id="delete-bookmark-op">Delete</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-danger"
+                                                    id="delete-bookmark-op">Delete</button>
                                             </div>
                                         </div>
                                         <!-- Delete Button and Modal END-->
                                     </div>
                                 </div>
                                 <!-- END Delete Button and Modal -->
-                                
+
 
                                 <!-- Favorite Button -->
-                                <button type="button" class="favoriteBtn {{this.isFavorite}}" onclick="addfavorite('{{this.url}}');">Add To Favorite</button>
+                                <button type="button" class="favoriteBtn {{this.isFavorite}}"
+                                    onclick="addfavorite('{{this.url}}');">Add To Favorite</button>
                                 <!-- Share Button -->
                                 <div class="container">
                                     <div class="share"></div>
@@ -306,11 +360,19 @@
 
 <!-- Page level plugins: Customized Javascript code for dashboard.handlebars ONLY!!!!-->
 <script defer src="js/postBookmark.js"></script>
+<script defer src="js/editBookmark.js"></script>
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
 <script defer src="js/addFavorite.js"></script>
 <script defer type="text/javascript">
-    function addfavorite(u){
+    function modalshow(genre, des, url) {
+        $('#editBookCategory').val(genre);
+        $('#editBookDes').text(des);
+        $('#editBookmarkURL').val(url);
+        $('#editModal').modal('show');
+    }
+
+    function addfavorite(u) {
         //console.log("1");
         var fun = addFavorite;
         fun(u);
@@ -318,17 +380,15 @@
 
     function showFav() {
         const datas = document.getElementsByClassName('cardEach');
-        for(var i = 0; i < datas.length; i++) {
-            if(datas[i].getAttribute('name') == "Yes") {
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].getAttribute('name') == "Yes") {
                 //datas[i].setAttribute('display', 'block');
             }
             else {
                 datas[i].setAttribute('hidden', true);
             }
         }
-        //if($('.cardEach').find('button:[class=favoriteBtn]').attr('name') == "No") {
-            
-        //}
+
     }
     $(document).ready(function () {
         $('.favoriteBtn.No').addClass("btn btn-primary");
