@@ -101,7 +101,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="urlModalLabel">Add new Bookmark</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" onclick="closeBokModal();" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -132,7 +132,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
-                                            data-dismiss="modal">Close</button>
+                                            onclick="closeBokModal();">Close</button>
                                         <button type="submit" class="btn btn-primary" value="save"
                                             id="saveBookmark">Save</button>
                                     </div>
@@ -309,11 +309,21 @@
 <script defer src="js/deleteBookmark.js"></script>
 <script defer src="js/jssocials.js"></script>
 <script defer type="text/javascript">
+    setInterval(function() {
+        if($('#urlModal').css('display') == "none") {
+            $('#edit-bookmark').attr('id', 'post-bookmark');
+        }
+    },500)
+    function closeBokModal() {
+        $('#edit-bookmark').attr('id', 'post-bookmark');
+        $('#urlModal').modal('hide');
+    }
     function modalshow(genre, des, url) {
         $('#bookCategory').val(genre);
         $('#bookDes').text(des);
         $('#bookmarkURL').val(url);
         $('#urlModalLabel').text('Edit Bookmark');
+        $('#post-bookmark').attr('id', 'edit-bookmark');
         $('#urlModal').modal('show');
     }
     $(document).ready(function () {
