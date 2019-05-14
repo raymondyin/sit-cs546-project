@@ -407,14 +407,17 @@
         $('.favoriteBtn.No').text('Add to Favorite');
         $('.favoriteBtn.Yes').addClass("btn btn-secondary");
         $('.favoriteBtn.Yes').text('Remove from Favorite');
-        var i = 0;
-        $('#' + i).jsSocials({
-            shareIn: "popup",
-            url: $('#' + i).attr('data-name'),
-            showCount: false,
-            showLabel: false,
-            shares: ["twitter", "facebook", "googleplus"]
-        })
+        //var i = 0;
+        var num = document.getElementsByClassName('share').length;
+        for(var i = 0; i < num; i++) {
+            $('#' + i).jsSocials({
+                shareIn: "popup",
+                url: $('#' + i).attr('data-name'),
+                showCount: false,
+                showLabel: false,
+                shares: ["twitter", "facebook", "googleplus"]
+            })
+        }
     })
 </script>
 
