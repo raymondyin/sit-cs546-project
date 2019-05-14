@@ -7,6 +7,7 @@ const session = require('express-session');
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const passport = require('passport');
+//aaa
 
 const static = express.static(__dirname + "/public");
 app.use(cookieParser());
@@ -31,7 +32,7 @@ var log = async (req, res, next) => {
   console.log("[" +currentTime + "]: " + method + " " + route + " " + something);
   next();
 };
-app.use(log);
+//app.use(log);
 app.use(flash());
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');

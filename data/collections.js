@@ -18,6 +18,5 @@ const getCollectionFn = (collection) => {
 /* Now, you can list your collections here: */
 module.exports = {
     Users: getCollectionFn('users'),
-    Bookmark_category: getCollectionFn('Bookmark_category'),
-    url: getCollectionFn('url')
+    Bookmark_category: getCollectionFn('Bookmark_category')
 };

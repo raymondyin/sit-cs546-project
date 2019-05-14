@@ -3,6 +3,11 @@ const register = require("./Register");
 const bodyParser = require('body-parser');
 const login = require("./login");
 const dashboard = require("./dashboard");
+const addBookmark = require("./addBookmark");
+const deleteBookmark = require("./deleteBookmark");
+
+const addfavorite = require("./addfavorite");
+const editBookmark = require("./editBookmark");
 
 const constructorMethod = app => {
 
@@ -14,6 +19,10 @@ const constructorMethod = app => {
    
     app.use("/login", login);
     app.use('/dashboard', dashboard);
+    app.use("/addBookmark", addBookmark);
+    app.use("/deleteBookmark", deleteBookmark);
+    app.use("/addfavorite", addfavorite);
+    app.use("/editBookmark", editBookmark);
     
 
 

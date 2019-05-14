@@ -5,110 +5,64 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">Bookmark Collector </div>
-        </a>
-
+        <li>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" ">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Bookmark Collector </div>
+            </a>
+        </li>
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href=" " onclick="gotoType(1)">
+            <a class="nav-link" href="/dashboard" onclick="gotoType(1)">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-
-                <span>Your List</span>
+                <span>Dashboard</span>
             </a>
-
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="#" onclick="showFav();">
 
-                <span>Favorite</span></a>
+                <span>Favorite</span>
+            </a>
         </li>
 
 
         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
 
-        <div class="accordion" id="accordionExample">
+
+        <li class="accordion" id="accordionExample">
             <div class="card d-flex align-items-center justify-content-center">
                 <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
+                    <h1 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
                             Categories
                         </button>
-                    </h2>
+                    </h1>
                 </div>
 
-                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        Video
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    {{#each cata}}
+                    <div class="card-body align-items-center justify-content-center">
+                        <a href="/dashboard?catalog={{this}}">
+                            {{this}}
+                        </a>
                     </div>
-                    <div class="card-body">
-                        News
-                    </div>
-                    <div class="card-body">
-                        Games
-                    </div>
-                    <div class="card-body">
-                        Study
-                    </div>
+                    <script>
+                        //{{this}}.sort();
+                    </script>
+                    {{/each}}
+
                 </div>
             </div>
-
-            {{!-- <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-
-                <span>Type 1</span></a>
         </li>
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-
-                <span>Type 2</span></a>
-        </li>
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-
-                <span>Type 3</span></a>
-        </li>
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-
-                <span>Type 4</span></a>
-        </li>
-
-        <!-- Type buttom -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-
-                <span>Type 5</span></a>
-        </li> --}}
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            {{!-- <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div> --}}
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -122,69 +76,149 @@
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                {{!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
-                </button>
+                </button> --}}
 
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <form id="searchForm" method="POST" action="/dashboard"
+                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                            aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                        <input type="text" name="searchText" class="form-control bg-light border-0 small"
+                            placeholder="Search for..." aria-label="Search">
+                        <div id="basic-addon2" class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
                     </div>
                 </form>
+
+
                 <!-- Add Url -->
                 <div class="input-group justify-content-end">
                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urlModal">
                         Add Bookmark
                     </button>
                 </div>
-                <!-- Add url form -->
+                <!-- Add url modal form -->
                 <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add new Bookmark</h5>
+                                <h1 class="modal-title" id="urlModalLabel">Add new Bookmark</h1>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
 
                             <div class="modal-body">
-                                <form>
+                                <form id="post-bookmark">
                                     <div class="form-group">
-                                        <label for="Bookmark Category">Genre</label>
+                                        <label for="bookCategory">Category</label>
                                         <input type="text" class="form-control" name="bookCategory" id="bookCategory"
                                             aria-describedby="categoryHelp" placeholder="Ex: Drama" required>
+                                        <div id="categoryHelp"></div>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
 
                                     <div class="form-group">
-                                        <label for="Book Description">Content</label>
-                                        <textarea id="bookDes" name="bookDes" class="form-control" id="bookContent"
-                                            rows="3" placeholder="Enter Description.." required></textarea>
+                                        <label for="bookDes">Note</label>
+                                        <textarea id="bookDes" name="bookDes" class="form-control"
+                                            rows="3" placeholder="Enter Notes..." required></textarea>
                                     </div>
 
                                     <div class="dropdown-divider"></div>
                                     <!-- URL -->
                                     <div class="form-group">
-                                        <label for="URL">Bookmark Url</label>
+                                        <label for="bookmarkURL">Bookmark Url</label>
                                         <input type="url" class="form-control" id="bookmarkURL" name="bookmarkURL"
-                                            aria-describedby="bookmarkURLHelp" placeholder="https://example.com"
+                                            aria-describedby="bookmarkURL" placeholder="https://example.com"
                                             size="30" required>
+                                        <div id="bookmarkURLHelp"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" value="save"
+                                            id="saveBookmark">Save</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- START Delete Modal -->
+                <div id="deleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div id="mySmallModalLabel"></div>
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title">Confirm Deletion</h1>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sure to Delete Bookmark with ID:</p><p id="bookmarkID"></p><p>?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger" id="delete-bookmark-confirm-button">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Delete Modal -->
+
+                <!-- edit url form -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title" id="editModalLabel">Edit Bookmark</h1>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="edit-bookmark">
+                                    <div class="form-group">
+                                        <div id="editCategoryHelp"></div>
+                                        <label for="bookCategory">Category</label>
+                                        <input type="text" class="form-control" name="bookCategory"
+                                            id="editBookCategory" aria-describedby="editCategoryHelp"
+                                            placeholder="Ex: Drama" required>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group">
+                                        <label for="editBookDes">Note</label>
+                                        <textarea id="editBookDes" name="bookDes" class="form-control"
+                                            rows="3" placeholder="Enter Notes..."
+                                            required></textarea>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+                                    <!-- URL -->
+                                    <div class="form-group">
+                                        <div id="editBookmarkURLHelp"></div>
+                                        <label for="editBookmarkURL">Bookmark Url</label>
+                                        <input type="url" class="form-control" id="editBookmarkURL" name="bookmarkURL"
+                                            aria-describedby="editBookmarkURLHelp" placeholder="https://example.com"
+                                            size="30" readonly="readonly">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" id="closeForm"
                                             data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" value="save"
-                                            id="saveBookmark">Save</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            id="editSubmitBookmark">Save</button>
                                     </div>
 
                                 </form>
@@ -209,7 +243,7 @@
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small"
-                                        placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        placeholder="Search for..." aria-label="Search">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
@@ -220,22 +254,13 @@
                         </div>
                     </li>
 
-                    <!-- Nav Item - AddURL Dropdown (Visible Only XS) -->
-
-
-                    <!-- Nav Item - Alerts -->
-
-                    <!-- Nav Item - Messages -->
-
-
-                    <div class="topbar-divider d-none d-sm-block"></div>
-
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
-                            <img class="img-profile rounded-circle" src="http://p0.qhimg.com/dr/1080__/t01e8e3c1daa93bfc6c.jpg">
+                            <img class="img-profile rounded-circle" alt="Ironman_Profile"
+                                src="http://p0.qhimg.com/dr/1080__/t01e8e3c1daa93bfc6c.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -254,114 +279,65 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        {{#if success_msg}}
-                        <div class="alert alert-success">{{success_msg}}</div>
-                        {{/if}}
-                        {{#if error_msg}}
-                        <div class="alert alert-danger">{{error_msg}}</div>
-                        {{/if}}
-                        {{#if error}}
-                        <div class="alert alert-danger">{{error}}</div>
-                        {{/if}}
-                    </div>
-                </div>
                 <!-- Page Heading -->
-                <div class="swiper-container-solution">
-                    <div class="selected-solution">
-                        <div>
-                            <div class="swiper-container">
-                                <div class="layer-title">Bookmark</div>
-                                <div class="solution-cardlist swiper-wrapper">
-                                    {{#each posts}}
-                                    <div class="col-sm-4 swiper-slide" style="width: 18rem;">
-                                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/31x%2Bq3aNVKL._SX425_.jpg"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            
-                                            <h5 class="card-title">{{this.genre}}</h5>
-                                            <p class="card-text">{{this.description}}</p>
-                                            <a class="btn btn-primary" href={{this.url}} role="button">Go</a>
-                                            <button class="btn btn-link" type="button" data-toggle="modal" data-target="#urlModal">
-                                                Edit
-                                            </button>
-                                            <a href="#" class="card-link">Delete</a>
-                                            <a href="#" class="card-link">Favorite</a>
-                                            <a href="#" class="card-link">Share</a>
+                <h1 class="h3 mb-1 text-gray-800">Bookmarks</h1>
+                <p class="mb-4">All your bookmark collections are here.</p>
+                <!-- End of Page Heading -->
+
+
+                <!-- Content Row -->
+                <div class="row">
+                    <!-- Note: the bookmark cards starts populating here -->
+                    {{#each posts}}
+                    <div class="col-lg-12 cardEach" id={{this.url}} data-name={{this.isFavorite}}>
+                        <div class="card mb-4 py-3 border-left-primary">
+                            <div class="card-body" >
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <span class="badge badge-secondary" id="category" data-name="category">{{this.genre}}</span>
+                                        <a href="{{this.url}}" target="_blank" class="badge badge-dark">{{this.url}}</a>
+                                        <p>Notes: {{this.description}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                        <button class="btn btn-primary" type="button"
+                                            onclick="modalshow('{{this.genre}}','{{this.description}}','{{this.url}}');">
+                                            Edit
+                                        </button>
+                                        <!-- Delete Button -->
+                                        <button class="btn btn-primary" type="button" data-target=".bd-example-modal-sm" onclick="showDeleteModal('{{this._id}}');">Delete</button>
+                                        <!-- Favorite Button -->
+                                        <button type="button" class="favoriteBtn {{this.isFavorite}}"
+                                            onclick="addfavorite('{{this.url}}');">Add To Favorite</button>
+                                        <!-- Share Button -->
+                                        <div class="container">
+                                            <div class="share"></div>
                                         </div>
                                     </div>
-                                    {{/each}}
-
-
                                 </div>
-                                <div class="swiper-pagination solution-pagination"></div>
+                                
+                                
+                                
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
                         </div>
+                    </div><!-- END class="col-lg-12" -->
+                    {{/each}}
+                </div><!-- END Content Row -->
+            </div>
+            <!-- End Page Content (/.container-fluid) -->
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2019</span>
                     </div>
                 </div>
-
-
-                {{!-- <!-- dropdown -->
-                <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
-<!-- dropdown --> --}}
-                <!-- Content Row 
-                {{#each posts}}
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="pic/20161112180454_WwrFN.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <a class="btn btn-primary" href= "button">Go</a>                       
-                        <h5 class="card-title">{{this.genre}}</h5>
-                        <p class="card-text">{{this.description}}</p >
-                        
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Delete</a a>
-                        <a href="#" class="card-link">Favorite</a a>
-                        <a href="#" class="card-link">Share</a a>
-                    </div>
-                </div>
-
-
-                {{/each}}
-
-
-
-
-                 Content Row -->
-
-
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
+            </footer><!-- End of Footer -->
+        </div><!-- End of Main Content -->
+    </div><!-- End of Content Wrapper -->
+</div><!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -369,12 +345,12 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h1 class="modal-title" id="exampleModalLabel1">Ready to Leave?</h1>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -388,6 +364,8 @@
     </div>
 </div>
 
+
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -398,35 +376,55 @@
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
 
-<script src="js/postBookmark.js"></script>
-<script src="js/jquery-1.11.0.js"></script>
-<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    $(function () {
-        new Swiper(".swiper-container", {
+<!-- Page level plugins: Customized Javascript code for dashboard.handlebars ONLY!!!!-->
+<script defer src="js/postBookmark.js"></script>
+<script defer src="js/editBookmark.js"></script>
+<script defer src="js/deleteBookmark.js"></script>
+<script defer src="js/jssocials.js"></script>
+<script defer src="js/addFavorite.js"></script>
+<script>
+    function modalshow(genre, des, url) {
+        $('#bookCategory').val(genre);
+        $('#bookDes').text(des);
+        $('#bookmarkURL').val(url);
+        $('#urlModalLabel').text('Edit Bookmark');
+        $('#urlModal').modal('show');
+    }
+    function showDeleteModal(id){
+        $('#bookmarkID').text(id);
+        $('#deleteModal').modal('show');
+    }
 
-            /*默认功能属性*/
-            speed: 250,
-            slidesPerView: 3,
-            spaceBetween: 0,
-            slidesPerGroup: 3,
-            loop: true,
-            autoplay: true,
+    function addfavorite(u) {
+        //console.log("1");
+        var fun = addFavorite;
+        fun(u);
+    }
 
-            /*分页索引*/
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-
-            /*分页按钮*/
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
+    function showFav() {
+        const datas = document.getElementsByClassName('cardEach');
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].getAttribute('name') == "Yes") {
+                //datas[i].setAttribute('display', 'block');
             }
+            else {
+                datas[i].setAttribute('hidden', true);
+            }
+        }
 
-        });
+    }
+    $(document).ready(function () {
+        $('.favoriteBtn.No').addClass("btn btn-primary");
+        $('.favoriteBtn.No').text('Add to Favorite');
+        $('.favoriteBtn.Yes').addClass("btn btn-secondary");
+        $('.favoriteBtn.Yes').text('Remove from Favorite');
+        $('.share').jsSocials({
+            shareIn: "popup",
+            showCount: false,
+            showLabel: false,
+            shares: ["twitter", "facebook", "googleplus"]
+        })
     })
 </script>
 
-<!-- Page level plugins -->
+<!-- END Page level plugins -->
