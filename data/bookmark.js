@@ -132,6 +132,32 @@ async function searchBookmark(searchStr, userId) {
     return bookmarkResult;
 }
 
+
+// Search for genre, url and description of any bookmark that contains the input string as a substring
+/*async function searchBookmark(searchStr, userId) {
+    if (typeof searchStr !== String) throw "Url is not a string!";
+    if (!searchStr || searchStr.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
+    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
+
+
+    return searchResultByBookmarkId;
+}*/
+
+
+async function deleteBookmarkByID(id){
+    if (!id) throw "You must provide an id to search for";
+    
+    const bookmarkCollection = await book();
+    const bookmarkToBeDelated = await bookmarkCollection.findOne({userId: id});
+
+    const deletionInfo = await bookmarkCollection.removeOne({ _id: ObjectID(id) });
+
+    if (deletionInfo.deletedCount === 0) {
+        throw `Could not delete bookmark with id of ${id}`;
+    }
+    return bookmarkToBeDelated;
+}
+
 module.exports = {
     addBookmark,
     deleteBookmarkByID,
