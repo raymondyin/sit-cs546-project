@@ -373,11 +373,11 @@
 <script defer src="js/addFavorite.js"></script>
 <script defer type="text/javascript">
     function modalshow(genre, des, url) {
-        $('#bookCategory').val(genre);
-        $('#bookDes').text(des);
-        $('#bookmarkURL').val(url);
-        $('#urlModalLabel').text('Edit Bookmark');
-        $('#urlModal').modal('show');
+        $('#editBookCategory').val(genre);
+        $('#editBookDes').text(des);
+        $('#editBookmarkURL').val(url);
+        //$('#urlModalLabel').text('Edit Bookmark');
+        $('#editModal').modal('show');
     }
     function showDeleteModal(id){
         $('#bookmarkID').text(id);

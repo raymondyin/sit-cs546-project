@@ -11,7 +11,8 @@ router.post("/", async (req, res) => {
     const description = xss(req.body.description);
     const url = xss(req.body.bookUrl);
     const userId = req.session.passport.user;
-    var judge = await addBookmark.checkBookmark(url);
+    
+    var judge = await addBookmark.checkBookmark(url, userId);
     console.log(judge)
     if (judge == false) {
         //req.flash('error_msg', 'Bookmark already exist!');
