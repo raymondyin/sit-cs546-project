@@ -2,6 +2,7 @@ $("#edit-bookmark").submit(function (event) {
     var genre = $("#editBookCategory").val().toLowerCase(),
         description = $("#editBookDes").val(),
         bookUrl = $("#editBookmarkURL").val();
+    const redirect = window.location.href;
     $.ajax({
         type: "POST",
         url: "/editBookmark",
@@ -14,7 +15,7 @@ $("#edit-bookmark").submit(function (event) {
         success: function (result) {
             //if(result["success"] == "Updated Successfully") {
                 alert('Upload successfully!');
-                window.location.href = '/'
+                window.location.href = redirect;
             //}
             //else
             //if(result["success"] == "Updated failed") {
