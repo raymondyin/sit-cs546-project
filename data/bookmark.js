@@ -64,15 +64,15 @@ async function edit(genre, description, url) {
 
 async function isFavorite(userId, url) {
     const bookmark = await book();
-    const allBookmark = await bookmark.updateMany({ userId: userId, url: url }, { $set: { "isFavorite": "Yes" } }).toArray();
-    console.log(allBookmark);
+    const allBookmark = await bookmark.updateMany({ userId: userId, url: url }, { $set: { "isFavorite": "Yes" } })
+    //console.log(allBookmark);
     return "good";
 }
 
 async function notFavorite(userId, url) {
     const bookmark = await book();
-    const allBookmark = await bookmark.updateMany({ userId: userId, url: url }, { $set: { "isFavorite": "No" } }).toArray();
-    console.log(allBookmark);
+    const allBookmark = await bookmark.updateMany({ userId: userId, url: url }, { $set: { "isFavorite": "No" } })
+    //console.log(allBookmark);
     return "good";
 }
 
