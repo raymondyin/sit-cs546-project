@@ -1,4 +1,5 @@
 function addFavorite(url) {
+    const redirect = window.location.href;
     $.ajax({
         type: "POST",
         url: "/addfavorite",
@@ -8,7 +9,7 @@ function addFavorite(url) {
         dataType: "json",
         success: function (result) {
             console.log(result);
-            window.location.href = result.redirect;
+            window.location.href = redirect;
             /*if(result["success"] == "Updated Successfully") {
                 
             }*/
