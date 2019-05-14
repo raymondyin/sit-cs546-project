@@ -304,8 +304,8 @@
                                 <button type="button" class="favoriteBtn {{this.isFavorite}}"
                                     onclick="addfavorite('{{this.url}}');">Add To Favorite</button>
                                 <!-- Share Button -->
-                                <div class="container">
-                                    <div class="share"></div>
+                                <div class="container share-container">
+                                    <div class="share" id={{@index}} data-name={{this.url}}></div>
                                 </div>
                             </div>
                         </div>
@@ -407,8 +407,10 @@
         $('.favoriteBtn.No').text('Add to Favorite');
         $('.favoriteBtn.Yes').addClass("btn btn-secondary");
         $('.favoriteBtn.Yes').text('Remove from Favorite');
-        $('.share').jsSocials({
+        var i = 0;
+        $('#' + i).jsSocials({
             shareIn: "popup",
+            url: $('#' + i).attr('data-name'),
             showCount: false,
             showLabel: false,
             shares: ["twitter", "facebook", "googleplus"]
