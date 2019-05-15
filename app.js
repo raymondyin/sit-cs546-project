@@ -24,11 +24,11 @@ var log = async (req, res, next) => {
   let route = req.originalUrl;
   let something = "";
   if (req.session.passport) {
-      something = "(Authenticated User)";
+    something = "(Authenticated User)";
   } else {
-      something = "(Non-Authenticated User)";
+    something = "(Non-Authenticated User)";
   }
-  console.log("[" +currentTime + "]: " + method + " " + route + " " + something);
+  console.log("[" + currentTime + "]: " + method + " " + route + " " + something);
   next();
 };
 
@@ -40,9 +40,13 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use("/", static);
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({
+  defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 configRoutes(app);
 app.listen(3000, () => {

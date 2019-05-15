@@ -5,7 +5,9 @@ const registerData = data.register;
 const xss = require("xss");
 
 router.get('/', async (req, res) => {
-    res.render('static/register', {title: "Register"});
+    res.render('static/register', {
+        title: "Register"
+    });
 });
 
 router.post("/", async (req, res) => {
@@ -19,7 +21,7 @@ router.post("/", async (req, res) => {
         const state = xss(req.body.state);
         const email = xss(req.body.email);
         const phoneNumber = xss(req.body.phoneNumber);
-        const password = xss(req.body.pw1);    
+        const password = xss(req.body.pw1);
         if (await registerData.findExist(email)) {
             req.flash('error_msg', 'This email address is already used');
             res.redirect('/register');
@@ -29,11 +31,11 @@ router.post("/", async (req, res) => {
             req.flash('success_msg', 'You are now registered and can now login');
             res.redirect('/login');
         }
-    } catch(e) {
+    } catch (e) {
         console.log(e);
-        res.status(500).send();
+        res.status(500).send("error: " + e);
     }
-        
+
 });
 
 module.exports = router;
