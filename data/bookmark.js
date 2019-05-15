@@ -65,14 +65,12 @@ async function edit(genre, description, url) {
 async function isFavorite(userId, url) {
     const bookmark = await book();
     const allBookmark = await bookmark.updateMany({ userId: userId, url: url }, { $set: { "isFavorite": "Yes" } })
-    //console.log(allBookmark);
     return "good";
 }
 
 async function notFavorite(userId, url) {
     const bookmark = await book();
     const allBookmark = await bookmark.updateMany({ userId: userId, url: url }, { $set: { "isFavorite": "No" } })
-    //console.log(allBookmark);
     return "good";
 }
 
@@ -131,17 +129,6 @@ async function searchBookmark(searchStr, userId) {
 
     return bookmarkResult;
 }
-
-
-// Search for genre, url and description of any bookmark that contains the input string as a substring
-/*async function searchBookmark(searchStr, userId) {
-    if (typeof searchStr !== String) throw "Url is not a string!";
-    if (!searchStr || searchStr.length === 0) throw "Missing url for bookmarkSearchByUrl()!";
-    if (userId) throw "Missing userID for bookmarkSearchByTag()!";
-
-
-    return searchResultByBookmarkId;
-}*/
 
 
 async function deleteBookmarkByID(id){

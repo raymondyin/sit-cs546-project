@@ -8,18 +8,10 @@ $("#searchForm").submit(function (event) {
         },
         dataType: "json",
         success: function (result) {
-            //if(result["success"] == "Updated Successfully") {
-            
-            //}
-            //else
-            //if(result["success"] == "Updated failed") {
-              //  alert('Bookmark exists!');
-            //}
         },
         error: function (result) {
             console.log(result);
             alert("error");
         }
     });
-    //return false;
 });

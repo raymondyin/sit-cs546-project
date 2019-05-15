@@ -10,9 +10,6 @@ function addFavorite(url) {
         success: function (result) {
             console.log(result);
             window.location.href = redirect;
-            /*if(result["success"] == "Updated Successfully") {
-                
-            }*/
         },
         error: function (result) {
             console.log(result);

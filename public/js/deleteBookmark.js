@@ -4,6 +4,7 @@ $(document).ready(function () {
         var genre = $("#bookCategory").val().toLowerCase(),
             description = $("#bookDes").val(),
             id = $("#bookmarkID").text();
+        const redirect = window.location.href;    
         $.ajax({
             type: "DELETE",
             url: "/deleteBookmark",
@@ -13,7 +14,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (result) {
                 console.log(result);
-                window.location.href = result.redirect;
+                window.location.href = redirect;
             },
             error: function (result) {
                 console.log(result);

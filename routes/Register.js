@@ -4,7 +4,6 @@ const data = require("../data");
 const registerData = data.register;
 const xss = require("xss");
 
-// var popupS = require('popups');
 router.get('/', async (req, res) => {
     res.render('static/register', {title: "Register"});
 });

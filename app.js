@@ -1,3 +1,4 @@
+// main code for setup and initialization for the application 
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -7,9 +8,6 @@ const session = require('express-session');
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const passport = require('passport');
-
-
-
 const static = express.static(__dirname + "/public");
 app.use(cookieParser());
 app.use(session({
@@ -33,7 +31,7 @@ var log = async (req, res, next) => {
   console.log("[" +currentTime + "]: " + method + " " + route + " " + something);
   next();
 };
-//app.use(log);
+
 app.use(flash());
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');

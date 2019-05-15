@@ -1,3 +1,4 @@
+// mongoDB configuration
 var exports = (module.exports = {});
 
 exports.mongoConfig = {
